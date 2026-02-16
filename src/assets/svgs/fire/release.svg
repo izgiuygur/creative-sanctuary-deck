@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<!-- Burning scroll/paper with fire eating edges, embers floating, smoke curling -->
+<!-- Main scroll body -->
+<path d="M120 120 Q118 160 115 200 Q112 240 115 280 Q118 310 125 340 Q130 360 140 370" />
+<path d="M280 120 Q282 160 285 200 Q288 240 285 280 Q282 310 275 340 Q270 360 260 370" />
+<path d="M140 370 Q160 378 180 380 Q200 382 220 380 Q240 378 260 370" />
+<!-- Scroll curl at bottom -->
+<path d="M140 370 Q135 375 132 368 Q130 358 135 350 Q140 345 148 348 Q155 352 152 360" />
+<path d="M260 370 Q265 375 268 368 Q270 358 265 350 Q260 345 252 348 Q245 352 248 360" />
+<!-- Text lines on scroll (being consumed) -->
+<path d="M145 340 Q165 338 185 340 Q205 338 225 340 Q245 338 255 340" />
+<path d="M142 320 Q162 318 182 320 Q202 318 222 320 Q242 318 258 320" />
+<path d="M140 300 Q160 298 180 300 Q200 298 220 300 Q240 298 260 300" />
+<path d="M138 280 Q158 278 178 280 Q198 278 218 280 Q238 278 258 280" />
+<path d="M136 260 Q156 258 176 260 Q196 258 216 260 Q236 258 262 260" />
+<path d="M134 240 Q154 238 174 240 Q194 238 214 240 Q234 238 265 240" />
+<path d="M132 220 Q152 218 172 220 Q192 218 212 220 Q232 218 268 220" />
+<!-- Partially consumed text lines (fragmenting) -->
+<path d="M130 200 Q150 198 170 200 Q190 198 210 200 Q225 198 240 200" />
+<path d="M128 180 Q148 178 168 180 Q188 178 202 180" />
+<path d="M125 160 Q145 158 165 160 Q178 158 188 160" />
+<!-- Fire consuming top of scroll - left edge -->
+<path d="M120 120 Q115 105 120 90 Q128 78 138 72 Q132 85 130 98 Q128 110 132 120" />
+<path d="M132 120 Q128 108 132 95 Q138 82 148 75 Q142 90 140 105 Q138 115 142 125" />
+<path d="M120 130 Q112 118 115 102 Q120 88 130 78 Q125 92 122 108 Q120 118 125 130" />
+<!-- Fire consuming top of scroll - right edge -->
+<path d="M280 120 Q285 105 280 90 Q272 78 262 72 Q268 85 270 98 Q272 110 268 120" />
+<path d="M268 120 Q272 108 268 95 Q262 82 252 75 Q258 90 260 105 Q262 115 258 125" />
+<path d="M280 130 Q288 118 285 102 Q280 88 270 78 Q275 92 278 108 Q280 118 275 130" />
+<!-- Main fire wave consuming the scroll top -->
+<path d="M120 120 Q130 100 145 88 Q160 78 175 82 Q168 92 162 105 Q158 118 160 132" />
+<path d="M160 132 Q165 115 175 100 Q185 88 200 85 Q190 98 185 112 Q180 125 182 140" />
+<path d="M182 140 Q188 122 198 108 Q208 95 220 92 Q212 105 208 118 Q205 132 208 145" />
+<path d="M208 145 Q215 128 225 112 Q235 98 248 95 Q240 108 235 122 Q232 135 235 148" />
+<path d="M235 148 Q242 132 252 118 Q262 105 272 100 Q265 115 262 130 Q260 142 265 152" />
+<path d="M265 152 Q272 138 280 125 Q285 115 280 120" />
+<!-- Upper flames reaching higher -->
+<path d="M140 88 Q135 68 142 50 Q148 38 155 30 Q150 45 148 58 Q146 72 150 82" />
+<path d="M175 82 Q172 60 178 40 Q185 25 192 18 Q188 35 185 50 Q183 65 185 78" />
+<path d="M200 85 Q198 62 202 42 Q208 25 215 15 Q210 32 208 48 Q205 65 208 78" />
+<path d="M225 92 Q228 70 222 52 Q218 38 212 28 Q218 42 220 58 Q222 72 218 85" />
+<path d="M258 100 Q262 80 258 62 Q252 48 245 38 Q252 52 255 68 Q258 82 254 95" />
+<!-- Even higher flame tips -->
+<path d="M155 30 Q152 18 158 8" />
+<path d="M192 18 Q190 8 195 2" />
+<path d="M215 15 Q218 5 212 0" />
+<!-- Smoke wisps above flames -->
+<path d="M130 55 Q125 42 128 30 Q132 18 128 8" />
+<path d="M270 50 Q275 38 272 25 Q268 15 272 5" />
+<path d="M145 35 Q140 22 145 12" />
+<path d="M255 32 Q260 20 255 10" />
+<!-- Smoke curves -->
+<path d="M115 70 Q105 55 108 40 Q112 28 108 15" />
+<path d="M285 65 Q295 50 292 35 Q288 22 292 10" />
+<!-- Floating embers -->
+<circle cx="130" cy="45" r="2.5" />
+<circle cx="270" cy="42" r="2.5" />
+<circle cx="160" cy="25" r="2" />
+<circle cx="240" cy="22" r="2" />
+<circle cx="200" cy="10" r="2" />
+<circle cx="145" cy="15" r="1.5" />
+<circle cx="255" cy="12" r="1.5" />
+<circle cx="110" cy="60" r="2" />
+<circle cx="290" cy="55" r="2" />
+<circle cx="175" cy="18" r="1.5" />
+<circle cx="225" cy="15" r="1.5" />
+<!-- Ash particles floating -->
+<circle cx="100" cy="80" r="1" />
+<circle cx="300" cy="75" r="1" />
+<circle cx="120" cy="35" r="1" />
+<circle cx="280" cy="30" r="1" />
+<circle cx="185" cy="5" r="1" />
+<circle cx="215" cy="8" r="1" />
+<circle cx="95" cy="100" r="1.5" />
+<circle cx="305" cy="95" r="1.5" />
+<!-- Ember glow dots on scroll surface near fire line -->
+<circle cx="150" cy="140" r="1.5" />
+<circle cx="170" cy="148" r="1" />
+<circle cx="195" cy="145" r="1.5" />
+<circle cx="220" cy="150" r="1" />
+<circle cx="245" cy="152" r="1.5" />
+<!-- Curling burned edge details -->
+<path d="M125 140 Q120 135 122 128 Q125 122 130 125" />
+<path d="M275 145 Q280 140 278 132 Q275 125 270 128" />
+<path d="M145 155 Q140 150 142 142" />
+<path d="M255 158 Q260 152 258 145" />
+</svg>

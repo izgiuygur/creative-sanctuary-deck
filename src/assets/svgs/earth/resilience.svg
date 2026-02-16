@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Cliff face - left side (main cliff) -->
+  <path d="M0 60 Q30 55 60 62 Q80 58 100 65 Q120 60 140 68 Q155 65 170 72 Q178 70 185 75 L185 390" />
+  <!-- Cliff face edge detail -->
+  <path d="M170 72 Q172 80 175 90 Q178 100 180 115" />
+  <path d="M155 68 Q158 78 160 88 Q162 98 165 110" />
+  <!-- Cliff ledges and texture - left -->
+  <path d="M0 110 Q30 105 55 108 Q75 104 95 110 Q115 106 135 112 Q160 108 180 115" />
+  <path d="M0 165 Q25 160 50 163 Q70 158 90 165 Q110 160 130 168 Q155 162 178 170" />
+  <path d="M0 220 Q20 215 45 218 Q65 213 85 220 Q105 215 125 222 Q150 218 175 225" />
+  <path d="M0 280 Q25 274 50 278 Q70 273 90 280 Q110 275 130 282 Q155 278 175 285" />
+  <path d="M0 340 Q20 335 45 338 Q65 333 85 340 Q110 335 130 342 Q155 338 178 345" />
+  <!-- Cliff crack where tree grows -->
+  <path d="M170 160 Q175 155 178 148 Q182 142 180 135 Q176 128 172 125" />
+  <path d="M160 162 Q165 156 168 150 Q170 144 168 138 Q165 132 162 128" />
+  <!-- Rock texture details on cliff -->
+  <path d="M30 80 Q35 85 40 82" />
+  <path d="M80 90 Q85 95 90 92" />
+  <path d="M120 82 Q125 87 130 84" />
+  <path d="M45 135 Q50 140 55 137" />
+  <path d="M100 130 Q105 135 110 132" />
+  <path d="M150 128 Q155 133 160 130" />
+  <path d="M25 190 Q30 195 35 192" />
+  <path d="M70 185 Q75 190 80 187" />
+  <path d="M120 195 Q125 200 130 197" />
+  <path d="M40 248 Q45 253 50 250" />
+  <path d="M90 245 Q95 250 100 247" />
+  <path d="M140 252 Q145 257 150 254" />
+  <path d="M30 310 Q35 315 40 312" />
+  <path d="M80 305 Q85 310 90 307" />
+  <path d="M130 315 Q135 320 140 317" />
+  <path d="M50 365 Q55 370 60 367" />
+  <path d="M110 360 Q115 365 120 362" />
+  <!-- Tree growing from crack - wind-bent trunk -->
+  <path d="M168 148 Q175 140 185 128 Q200 110 220 95 Q245 80 270 72 Q290 68 305 70" />
+  <path d="M162 150 Q170 142 180 132 Q195 118 215 105 Q235 92 258 82 Q278 76 295 75" />
+  <!-- Trunk bark texture -->
+  <path d="M185 128 Q190 122 195 118" />
+  <path d="M210 108 Q215 102 220 98" />
+  <path d="M240 90 Q245 85 250 82" />
+  <path d="M270 78 Q275 74 280 72" />
+  <!-- Roots gripping the rock -->
+  <path d="M168 148 Q160 155 152 165 Q145 175 140 188" />
+  <path d="M165 150 Q158 158 155 168 Q150 178 148 190" />
+  <path d="M162 152 Q155 160 150 172 Q148 182 145 195" />
+  <!-- Root grip details -->
+  <path d="M140 188 Q135 195 132 205" />
+  <path d="M148 190 Q145 198 142 208" />
+  <path d="M145 195 Q142 200 140 210" />
+  <path d="M140 188 Q138 186 135 188" />
+  <path d="M148 190 Q146 188 143 190" />
+  <!-- Wind-bent branches going right -->
+  <path d="M270 72 Q285 62 300 55 Q315 50 325 52" />
+  <path d="M260 78 Q275 68 290 60 Q305 55 320 58" />
+  <path d="M280 70 Q295 58 310 52 Q322 48 335 48" />
+  <path d="M295 68 Q310 56 325 48 Q340 45 350 48" />
+  <path d="M305 70 Q318 60 332 55 Q345 52 355 55" />
+  <!-- Secondary branches -->
+  <path d="M230 88 Q240 78 255 70 Q262 65 268 62" />
+  <path d="M250 80 Q258 72 268 65 Q275 60 280 58" />
+  <!-- Canopy leaf clusters - wind-shaped -->
+  <path d="M325 52 Q332 44 340 40 Q350 36 358 40 Q362 46 356 52 Q348 56 340 55 Q335 56 330 58" />
+  <path d="M335 48 Q342 38 352 35 Q362 32 368 38 Q372 44 365 50 Q358 54 350 52" />
+  <path d="M350 48 Q358 40 368 38 Q378 36 382 42 Q384 48 378 54 Q370 58 362 56" />
+  <path d="M355 55 Q362 48 372 46 Q380 44 384 50 Q386 56 380 60 Q372 64 365 62" />
+  <path d="M268 62 Q274 55 282 50 Q290 48 295 52 Q298 58 292 62 Q285 65 278 64" />
+  <path d="M280 58 Q288 50 298 48 Q306 46 310 52 Q312 58 306 62 Q298 66 290 64" />
+  <!-- More leaf detail clusters -->
+  <path d="M310 52 Q318 44 328 42 Q336 42 338 48" />
+  <path d="M300 55 Q308 48 318 46 Q326 46 328 50" />
+  <path d="M320 58 Q325 52 332 48" />
+  <!-- Small leaf texture strokes -->
+  <path d="M340 42 Q344 38 348 40" />
+  <path d="M358 38 Q362 34 366 38" />
+  <path d="M375 42 Q378 38 382 42" />
+  <path d="M282 52 Q286 48 290 52" />
+  <path d="M310 48 Q314 44 318 48" />
+  <!-- Small flowers blooming on the tree -->
+  <circle cx="330" cy="45" r="4" />
+  <circle cx="330" cy="45" r="2" />
+  <circle cx="360" cy="40" r="4" />
+  <circle cx="360" cy="40" r="2" />
+  <circle cx="380" cy="48" r="3.5" />
+  <circle cx="380" cy="48" r="1.5" />
+  <circle cx="290" cy="55" r="3" />
+  <circle cx="290" cy="55" r="1.5" />
+  <circle cx="345" cy="55" r="3" />
+  <circle cx="345" cy="55" r="1.5" />
+  <!-- Flowers on cliff face -->
+  <path d="M155 250 Q152 244 150 240" />
+  <circle cx="150" cy="237" r="3" />
+  <circle cx="150" cy="237" r="1.5" />
+  <path d="M165 300 Q162 294 160 290" />
+  <circle cx="160" cy="287" r="3" />
+  <circle cx="160" cy="287" r="1.5" />
+  <path d="M140 355 Q137 349 135 345" />
+  <circle cx="135" cy="342" r="2.5" />
+  <circle cx="135" cy="342" r="1" />
+  <!-- Small plant tufts on cliff ledges -->
+  <path d="M100 110 Q98 104 96 100" />
+  <path d="M100 110 Q100 103 102 99" />
+  <path d="M100 110 Q103 104 106 100" />
+  <path d="M50 165 Q48 159 46 155" />
+  <path d="M50 165 Q50 158 52 154" />
+  <path d="M50 165 Q53 159 56 155" />
+  <!-- Wind effect lines -->
+  <path d="M220 130 Q240 128 260 130" />
+  <path d="M250 115 Q270 112 290 115" />
+  <path d="M280 100 Q300 97 320 100" />
+  <path d="M310 85 Q330 82 350 85" />
+  <!-- Distant cliff on right -->
+  <path d="M340 390 Q345 360 350 330 Q355 300 360 270 Q365 240 370 210 Q375 180 380 160 Q385 150 390 145 Q395 140 400 138" />
+  <!-- Right cliff ledge textures -->
+  <path d="M340 390 Q350 385 360 388" />
+  <path d="M345 360 Q355 355 365 358" />
+  <path d="M355 300 Q365 295 375 298" />
+  <path d="M365 240 Q375 235 385 238" />
+  <!-- Gap/abyss below -->
+  <path d="M185 390 Q200 385 220 388 Q250 382 280 386 Q310 382 340 390" />
+  <!-- Falling pebbles from cliff -->
+  <circle cx="190" cy="200" r="1.5" />
+  <circle cx="195" cy="230" r="1" />
+  <circle cx="188" cy="260" r="1.5" />
+  <circle cx="192" cy="310" r="1" />
+  <circle cx="186" cy="350" r="1.5" />
+</svg>

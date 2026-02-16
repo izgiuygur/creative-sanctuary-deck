@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Crystal prism - main triangle -->
+  <path d="M200 60 L100 320 L300 320 Z" />
+  <!-- Inner facet lines of prism -->
+  <path d="M200 60 L150 320" />
+  <path d="M200 60 L200 320" />
+  <path d="M200 60 L250 320" />
+  <!-- Secondary facet detail -->
+  <path d="M150 190 L250 190" />
+  <path d="M135 230 L265 230" />
+  <path d="M120 270 L280 270" />
+  <!-- Inner crystal geometry -->
+  <path d="M200 60 L170 190 Q165 200 170 210 L135 230" />
+  <path d="M200 60 L230 190 Q235 200 230 210 L265 230" />
+  <path d="M170 190 L200 210 L230 190" />
+  <!-- Light beam entering from upper left -->
+  <path d="M20 100 Q60 110 100 130 Q130 145 155 160" />
+  <path d="M25 90 Q65 100 105 120 Q135 135 160 150" />
+  <path d="M30 80 Q70 90 110 110 Q140 125 165 140" />
+  <!-- Small beam lines entering -->
+  <line x1="40" y1="105" x2="55" y2="108" />
+  <line x1="50" y1="95" x2="65" y2="98" />
+  <line x1="60" y1="85" x2="75" y2="88" />
+  <!-- Refracted beams exiting right side - spreading spectrum -->
+  <path d="M245 150 Q280 130 320 105 Q345 90 375 70" />
+  <path d="M248 160 Q285 145 325 130 Q350 120 380 105" />
+  <path d="M250 170 Q290 160 330 155 Q355 150 385 142" />
+  <path d="M250 180 Q290 178 330 180 Q355 182 385 180" />
+  <path d="M248 190 Q285 198 325 210 Q350 220 380 230" />
+  <path d="M245 200 Q280 215 320 240 Q345 255 375 270" />
+  <path d="M242 210 Q275 230 315 265 Q340 285 370 310" />
+  <!-- Beam detail lines on exit -->
+  <line x1="280" y1="118" x2="295" y2="112" />
+  <line x1="290" y1="138" x2="305" y2="133" />
+  <line x1="295" y1="158" x2="310" y2="155" />
+  <line x1="295" y1="180" x2="310" y2="180" />
+  <line x1="290" y1="205" x2="305" y2="210" />
+  <line x1="285" y1="228" x2="300" y2="235" />
+  <line x1="278" y1="248" x2="292" y2="258" />
+  <!-- Sparkle at entry point -->
+  <path d="M155 155 L160 145 L165 155 L160 165 Z" />
+  <path d="M153 155 L160 148 L167 155 L160 162 Z" />
+  <!-- Sparkle at refraction point -->
+  <path d="M245 180 L250 170 L255 180 L250 190 Z" />
+  <path d="M243 180 L250 173 L257 180 L250 187 Z" />
+  <!-- Floating geometric particles around the prism -->
+  <!-- Small diamond shapes -->
+  <path d="M80 50 L85 45 L90 50 L85 55 Z" />
+  <path d="M320 50 L325 45 L330 50 L325 55 Z" />
+  <path d="M60 200 L65 195 L70 200 L65 205 Z" />
+  <path d="M340 300 L345 295 L350 300 L345 305 Z" />
+  <path d="M50 280 L55 275 L60 280 L55 285 Z" />
+  <!-- Small triangles floating -->
+  <path d="M75 140 L80 130 L85 140 Z" />
+  <path d="M330 180 L335 170 L340 180 Z" />
+  <path d="M55 330 L60 320 L65 330 Z" />
+  <path d="M340 350 L345 340 L350 350 Z" />
+  <!-- Tiny circles/dots scattered -->
+  <circle cx="40" cy="60" r="2" />
+  <circle cx="360" cy="55" r="2" />
+  <circle cx="45" cy="160" r="1.5" />
+  <circle cx="355" cy="240" r="1.5" />
+  <circle cx="90" cy="360" r="2" />
+  <circle cx="310" cy="370" r="2" />
+  <circle cx="200" cy="30" r="2" />
+  <circle cx="30" cy="300" r="1.5" />
+  <circle cx="370" cy="340" r="1.5" />
+  <!-- Light ray detail lines radiating outward -->
+  <line x1="350" y1="80" x2="365" y2="72" />
+  <line x1="355" y1="115" x2="370" y2="110" />
+  <line x1="360" y1="148" x2="375" y2="145" />
+  <line x1="360" y1="180" x2="375" y2="180" />
+  <line x1="355" y1="218" x2="370" y2="222" />
+  <line x1="350" y1="252" x2="365" y2="260" />
+  <line x1="345" y1="285" x2="358" y2="296" />
+  <!-- Crystal surface reflections -->
+  <path d="M130 250 Q140 245 150 250" />
+  <path d="M245 250 Q255 245 265 250" />
+  <path d="M160 290 Q170 285 180 290" />
+  <path d="M220 290 Q230 285 240 290" />
+  <!-- Ambient light particles -->
+  <circle cx="170" cy="100" r="1" />
+  <circle cx="230" cy="100" r="1" />
+  <circle cx="145" cy="160" r="1" />
+  <circle cx="255" cy="160" r="1" />
+  <circle cx="130" cy="200" r="1" />
+  <circle cx="270" cy="200" r="1" />
+  <!-- Ground line with subtle detail -->
+  <path d="M60 340 Q130 335 200 338 Q270 341 340 336" />
+  <path d="M80 350 Q150 345 200 348 Q250 351 320 346" />
+  <!-- Extra geometric sparkle elements -->
+  <path d="M100 40 L100 30 M95 35 L105 35" />
+  <path d="M300 35 L300 25 M295 30 L305 30" />
+  <path d="M370 160 L370 150 M365 155 L375 155" />
+  <path d="M30 230 L30 220 M25 225 L35 225" />
+</svg>

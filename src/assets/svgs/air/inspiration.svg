@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Dandelion stem -->
+  <path d="M200 390 Q195 360 198 330 Q200 305 202 280 Q204 260 203 245" />
+  <!-- Stem detail lines -->
+  <path d="M198 340 Q195 345 192 348" />
+  <path d="M200 310 Q203 315 206 318" />
+  <!-- Small leaf at base of stem -->
+  <path d="M200 370 Q188 362 178 355 Q185 358 192 362 Q196 365 200 368" />
+  <path d="M200 370 Q212 362 222 355 Q215 358 208 362 Q204 365 200 368" />
+  <!-- Dandelion head - core -->
+  <circle cx="203" cy="240" r="12" />
+  <!-- Remaining seed stalks on head -->
+  <line x1="203" y1="228" x2="203" y2="220" />
+  <line x1="210" y1="230" x2="215" y2="224" />
+  <line x1="196" y1="230" x2="191" y2="224" />
+  <line x1="214" y1="236" x2="220" y2="232" />
+  <line x1="192" y1="236" x2="186" y2="232" />
+  <line x1="214" y1="244" x2="220" y2="244" />
+  <line x1="192" y1="244" x2="186" y2="244" />
+  <line x1="208" y1="250" x2="212" y2="255" />
+  <line x1="198" y1="250" x2="194" y2="255" />
+  <!-- SEEDS FLYING - each with detailed parachute structure -->
+  <!-- Seed 1 - nearby -->
+  <circle cx="160" cy="200" r="2" />
+  <path d="M160 200 L156 190 M160 200 L160 189 M160 200 L164 190 M160 200 L153 193 M160 200 L167 193" />
+  <path d="M153 188 Q160 185 167 188" />
+  <!-- Seed 2 -->
+  <circle cx="130" cy="160" r="2" />
+  <path d="M130 160 L126 150 M130 160 L130 149 M130 160 L134 150 M130 160 L123 153 M130 160 L137 153" />
+  <path d="M123 148 Q130 145 137 148" />
+  <!-- Seed 3 -->
+  <circle cx="100" cy="120" r="2" />
+  <path d="M100 120 L96 110 M100 120 L100 109 M100 120 L104 110 M100 120 L93 113 M100 120 L107 113" />
+  <path d="M93 108 Q100 105 107 108" />
+  <!-- Seed 4 -->
+  <circle cx="75" cy="75" r="2" />
+  <path d="M75 75 L71 65 M75 75 L75 64 M75 75 L79 65 M75 75 L68 68 M75 75 L82 68" />
+  <path d="M68 63 Q75 60 82 63" />
+  <!-- Seed 5 - upper right -->
+  <circle cx="250" cy="170" r="2" />
+  <path d="M250 170 L246 160 M250 170 L250 159 M250 170 L254 160 M250 170 L243 163 M250 170 L257 163" />
+  <path d="M243 158 Q250 155 257 158" />
+  <!-- Seed 6 -->
+  <circle cx="290" cy="130" r="2" />
+  <path d="M290 130 L286 120 M290 130 L290 119 M290 130 L294 120 M290 130 L283 123 M290 130 L297 123" />
+  <path d="M283 118 Q290 115 297 118" />
+  <!-- Seed 7 -->
+  <circle cx="320" cy="85" r="2" />
+  <path d="M320 85 L316 75 M320 85 L320 74 M320 85 L324 75 M320 85 L313 78 M320 85 L327 78" />
+  <path d="M313 73 Q320 70 327 73" />
+  <!-- Seed 8 - transforming into star -->
+  <circle cx="345" cy="50" r="2" />
+  <path d="M345 50 L341 40 M345 50 L345 39 M345 50 L349 40 M345 50 L338 43 M345 50 L352 43" />
+  <path d="M345 38 L347 32 L349 38 L345 35 L341 38 Z" />
+  <!-- Seed 9 - becoming star -->
+  <circle cx="60" cy="45" r="1.5" />
+  <path d="M60 45 L57 37 M60 45 L60 36 M60 45 L63 37" />
+  <path d="M60 34 L62 28 L64 34 L60 31 L56 34 Z" />
+  <!-- Seed 10 - fully transformed star -->
+  <path d="M180 50 L183 40 L186 50 L180 45 L192 45 Z" />
+  <path d="M180 50 L178 55 M186 50 L188 55 M183 40 L183 35" />
+  <!-- Seed 11 - small distant -->
+  <circle cx="220" cy="80" r="1.5" />
+  <path d="M220 80 L217 72 M220 80 L220 71 M220 80 L223 72" />
+  <!-- Seed 12 -->
+  <circle cx="150" cy="100" r="1.5" />
+  <path d="M150 100 L147 92 M150 100 L150 91 M150 100 L153 92" />
+  <!-- Stars that seeds are becoming -->
+  <path d="M50 30 L52 24 L54 30 L48 27 L56 27 Z" />
+  <path d="M120 40 L122 34 L124 40 L118 37 L126 37 Z" />
+  <path d="M280 45 L282 39 L284 45 L278 42 L286 42 Z" />
+  <path d="M350 25 L352 19 L354 25 L348 22 L356 22 Z" />
+  <!-- Large decorative stars -->
+  <path d="M30 60 L33 50 L36 60 L26 55 L40 55 Z" />
+  <path d="M370 35 L373 25 L376 35 L366 30 L380 30 Z" />
+  <!-- Wind swirls carrying seeds -->
+  <path d="M170 210 Q155 195 140 185 Q125 178 115 175 Q105 173 100 178 Q98 185 105 190" />
+  <path d="M230 200 Q250 188 265 180 Q280 175 295 172 Q310 170 318 175 Q322 182 315 188" />
+  <!-- Smaller wind curves -->
+  <path d="M120 140 Q108 132 98 128 Q90 126 85 130" />
+  <path d="M265 145 Q278 138 288 135 Q298 133 305 138" />
+  <!-- Wind detail lines -->
+  <path d="M80 100 Q95 95 110 100" />
+  <path d="M65 55 Q80 50 95 55" />
+  <path d="M300 110 Q315 105 330 110" />
+  <path d="M310 65 Q325 60 340 65" />
+  <path d="M170 60 Q185 55 200 60" />
+  <path d="M220 50 Q235 45 250 50" />
+  <!-- Gentle breeze lines near base -->
+  <path d="M140 280 Q160 275 180 280" />
+  <path d="M220 275 Q240 270 260 275" />
+  <path d="M160 300 Q180 295 200 300" />
+  <!-- Grass at base -->
+  <path d="M150 390 Q152 378 155 370" />
+  <path d="M160 390 Q158 380 155 374" />
+  <path d="M240 390 Q242 378 245 370" />
+  <path d="M250 390 Q248 380 245 374" />
+  <path d="M170 390 Q172 382 175 378" />
+  <path d="M230 390 Q228 382 225 378" />
+  <!-- Atmospheric dots -->
+  <circle cx="110" cy="155" r="1" />
+  <circle cx="200" cy="120" r="1" />
+  <circle cx="275" cy="155" r="1" />
+  <circle cx="180" cy="140" r="1" />
+  <circle cx="240" cy="100" r="1" />
+  <circle cx="140" cy="60" r="1" />
+  <circle cx="310" cy="55" r="1" />
+</svg>

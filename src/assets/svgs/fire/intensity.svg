@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<!-- Volcano erupting with lava flows, ash cloud, lightning, rocky terrain -->
+<!-- Mountain silhouette - left slope -->
+<path d="M10 390 Q30 375 55 355 Q80 332 105 308 Q128 285 148 262 Q165 242 178 225 Q188 212 195 202" />
+<!-- Mountain silhouette - right slope -->
+<path d="M390 390 Q370 375 345 355 Q320 332 295 308 Q272 285 252 262 Q235 242 222 225 Q212 212 205 202" />
+<!-- Crater rim -->
+<path d="M195 202 Q198 198 200 196 Q202 198 205 202" />
+<path d="M190 208 Q195 200 200 196 Q205 200 210 208" />
+<!-- Rocky terrain texture on mountain - left side -->
+<path d="M55 355 Q62 348 70 352" />
+<path d="M85 330 Q92 322 98 328" />
+<path d="M115 302 Q120 295 128 300" />
+<path d="M140 275 Q146 268 152 272" />
+<path d="M162 248 Q168 242 172 246" />
+<path d="M42 365 Q48 358 55 362" />
+<path d="M100 318 Q106 310 112 315" />
+<path d="M130 290 Q135 282 140 288" />
+<!-- Rocky terrain texture on mountain - right side -->
+<path d="M345 355 Q338 348 330 352" />
+<path d="M315 330 Q308 322 302 328" />
+<path d="M285 302 Q280 295 272 300" />
+<path d="M260 275 Q254 268 248 272" />
+<path d="M238 248 Q232 242 228 246" />
+<path d="M358 365 Q352 358 345 362" />
+<path d="M300 318 Q294 310 288 315" />
+<path d="M270 290 Q265 282 260 288" />
+<!-- Mountain ridge details -->
+<path d="M70 348 Q75 342 82 345" />
+<path d="M330 345 Q325 340 318 343" />
+<path d="M50 368 Q55 362 62 365" />
+<path d="M350 368 Q345 362 338 365" />
+<!-- Lava flow - left side of mountain -->
+<path d="M195 205 Q188 215 180 230 Q172 248 165 265 Q158 282 152 298 Q148 312 145 328 Q142 345 140 362 Q138 378 135 390" />
+<path d="M192 210 Q185 222 178 238 Q170 255 163 272 Q158 288 155 305 Q152 322 150 340 Q148 360 145 375 Q142 385 140 395" />
+<!-- Lava flow inner detail - left -->
+<path d="M185 225 Q180 235 176 248" />
+<path d="M170 262 Q165 275 162 288" />
+<path d="M155 305 Q152 318 150 332" />
+<!-- Lava flow - right side of mountain -->
+<path d="M205 205 Q212 215 220 230 Q228 248 235 265 Q242 282 248 298 Q252 312 255 328 Q258 345 260 362 Q262 378 265 390" />
+<path d="M208 210 Q215 222 222 238 Q230 255 237 272 Q242 288 245 305 Q248 322 250 340 Q252 360 255 375 Q258 385 260 395" />
+<!-- Lava flow inner detail - right -->
+<path d="M215 225 Q220 235 224 248" />
+<path d="M230 262 Q235 275 238 288" />
+<path d="M245 305 Q248 318 250 332" />
+<!-- Central lava column erupting upward -->
+<path d="M195 200 Q190 180 188 160 Q185 138 188 118 Q192 100 198 85 Q200 75 200 65" />
+<path d="M205 200 Q210 180 212 160 Q215 138 212 118 Q208 100 202 85 Q200 75 200 65" />
+<!-- Eruption spray - lava bombs arcing left -->
+<path d="M195 150 Q185 135 172 125 Q158 118 145 120 Q135 125 130 135" />
+<path d="M192 140 Q180 125 165 115 Q150 110 138 115 Q128 122 125 132" />
+<path d="M190 160 Q178 148 165 140 Q152 135 140 138 Q132 145 130 155" />
+<!-- Eruption spray - lava bombs arcing right -->
+<path d="M205 150 Q215 135 228 125 Q242 118 255 120 Q265 125 270 135" />
+<path d="M208 140 Q220 125 235 115 Q250 110 262 115 Q272 122 275 132" />
+<path d="M210 160 Q222 148 235 140 Q248 135 260 138 Q268 145 270 155" />
+<!-- Ash cloud / eruption plume -->
+<path d="M200 65 Q185 55 172 48 Q158 42 148 45 Q138 50 135 60 Q132 72 140 80 Q150 85 162 82 Q172 78 180 72" />
+<path d="M200 65 Q215 55 228 48 Q242 42 252 45 Q262 50 265 60 Q268 72 260 80 Q250 85 238 82 Q228 78 220 72" />
+<!-- Upper cloud layer -->
+<path d="M140 55 Q130 48 118 45 Q108 42 100 48 Q92 55 95 65 Q100 72 110 72 Q120 70 130 65 Q138 58 140 55" />
+<path d="M260 52 Q270 45 282 42 Q292 40 300 45 Q308 52 305 62 Q300 70 290 70 Q280 68 270 62 Q262 55 260 52" />
+<!-- Top cloud wisps -->
+<path d="M100 48 Q92 38 98 28 Q105 22 115 25 Q122 30 118 40" />
+<path d="M300 45 Q308 35 302 25 Q295 20 285 22 Q278 28 282 38" />
+<path d="M148 38 Q142 28 148 20 Q155 15 162 18 Q168 25 162 32" />
+<path d="M252 35 Q258 25 252 18 Q245 12 238 15 Q232 22 238 30" />
+<path d="M200 42 Q195 30 200 20 Q205 12 210 18 Q215 28 208 38" />
+<!-- Lightning bolts in ash cloud -->
+<path d="M135 65 L128 78 L140 82 L130 100" />
+<path d="M265 62 L272 75 L260 80 L270 98" />
+<path d="M165 50 L158 62 L168 65 L160 78" />
+<path d="M235 48 L242 60 L232 63 L240 75" />
+<!-- Lava bombs / flying rocks -->
+<circle cx="130" cy="135" r="4" />
+<circle cx="270" cy="132" r="4" />
+<circle cx="125" cy="130" r="3" />
+<circle cx="275" cy="128" r="3" />
+<circle cx="140" cy="142" r="3" />
+<circle cx="260" cy="140" r="3" />
+<!-- Glowing embers in eruption column -->
+<circle cx="195" cy="120" r="2.5" />
+<circle cx="205" cy="115" r="2.5" />
+<circle cx="200" cy="100" r="2" />
+<circle cx="192" cy="90" r="2" />
+<circle cx="208" cy="88" r="2" />
+<circle cx="200" cy="78" r="2" />
+<!-- Scattered ember particles -->
+<circle cx="155" cy="105" r="1.5" />
+<circle cx="245" cy="102" r="1.5" />
+<circle cx="145" cy="85" r="1.5" />
+<circle cx="255" cy="82" r="1.5" />
+<circle cx="170" cy="75" r="1.5" />
+<circle cx="230" cy="72" r="1.5" />
+<circle cx="118" cy="112" r="1" />
+<circle cx="282" cy="110" r="1" />
+<circle cx="160" cy="62" r="1" />
+<circle cx="240" cy="58" r="1" />
+<!-- Ground line -->
+<path d="M0 390 Q50 385 100 390 Q150 392 200 390 Q250 392 300 390 Q350 385 400 390" />
+<!-- Foreground rocks -->
+<path d="M20 390 Q22 382 28 378 Q35 375 42 378 Q48 382 50 390" />
+<path d="M340 390 Q342 380 348 376 Q355 374 362 378 Q368 384 370 390" />
+<path d="M75 390 Q78 385 82 382 Q88 380 92 384 Q95 388 96 390" />
+<path d="M305 390 Q308 384 312 382 Q318 380 322 384 Q325 388 326 390" />
+</svg>

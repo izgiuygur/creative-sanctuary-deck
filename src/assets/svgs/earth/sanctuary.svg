@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Giant tree trunk - left side -->
+  <path d="M50 390 Q42 350 38 300 Q35 250 40 200 Q45 150 55 110 Q65 75 80 55 Q95 40 110 35" />
+  <!-- Giant tree trunk - right side -->
+  <path d="M350 390 Q358 350 362 300 Q365 250 360 200 Q355 150 345 110 Q335 75 320 55 Q305 40 290 35" />
+  <!-- Trunk bark texture - left -->
+  <path d="M48 340 Q52 330 46 320" />
+  <path d="M42 290 Q48 278 40 268" />
+  <path d="M44 240 Q50 228 42 218" />
+  <path d="M50 190 Q56 178 48 168" />
+  <path d="M60 145 Q66 133 58 123" />
+  <path d="M72 105 Q78 95 70 88" />
+  <!-- Trunk bark texture - right -->
+  <path d="M352 340 Q348 330 354 320" />
+  <path d="M358 290 Q352 278 360 268" />
+  <path d="M356 240 Q350 228 358 218" />
+  <path d="M350 190 Q344 178 352 168" />
+  <path d="M340 145 Q334 133 342 123" />
+  <path d="M328 105 Q322 95 330 88" />
+  <!-- Tree canopy spreading above -->
+  <path d="M110 35 Q130 25 155 18 Q180 12 200 10 Q220 12 245 18 Q270 25 290 35" />
+  <!-- Upper canopy layers -->
+  <path d="M80 55 Q60 42 50 28 Q45 15 55 8 Q70 2 85 10 Q95 5 110 8" />
+  <path d="M320 55 Q340 42 350 28 Q355 15 345 8 Q330 2 315 10 Q305 5 290 8" />
+  <path d="M110 8 Q130 0 155 2 Q180 5 200 3 Q220 5 245 2 Q270 0 290 8" />
+  <!-- Branch stubs on trunk -->
+  <path d="M55 110 Q42 105 35 98 Q30 92 35 88 Q40 85 45 90 Q48 96 50 105" />
+  <path d="M345 110 Q358 105 365 98 Q370 92 365 88 Q360 85 355 90 Q352 96 350 105" />
+  <!-- Hollow entrance - arch shape -->
+  <path d="M120 390 Q115 350 118 310 Q122 275 135 250 Q155 225 180 215 Q195 210 200 208 Q205 210 220 215 Q245 225 265 250 Q278 275 282 310 Q285 350 280 390" />
+  <!-- Inner hollow depth line -->
+  <path d="M135 390 Q130 355 133 320 Q138 285 150 262 Q165 242 185 232 Q195 228 200 226 Q205 228 215 232 Q235 242 250 262 Q262 285 267 320 Q270 355 265 390" />
+  <!-- Hollow interior bark texture -->
+  <path d="M142 350 Q148 340 140 332" />
+  <path d="M145 305 Q150 295 142 288" />
+  <path d="M155 272 Q160 262 152 258" />
+  <path d="M258 350 Q252 340 260 332" />
+  <path d="M255 305 Q250 295 258 288" />
+  <path d="M245 272 Q240 262 248 258" />
+  <!-- Small round window in the tree -->
+  <circle cx="200" cy="130" r="22" />
+  <!-- Window cross frame -->
+  <path d="M200 108 L200 152" />
+  <path d="M178 130 L222 130" />
+  <!-- Window glow lines -->
+  <path d="M182 115 Q190 112 195 115" />
+  <path d="M205 115 Q210 112 218 115" />
+  <!-- Small shelf inside hollow -->
+  <path d="M155 290 Q175 285 200 284 Q225 285 245 290" />
+  <!-- Tiny items on shelf (bottles/jars) -->
+  <path d="M172 284 L172 276 Q175 272 178 276 L178 284" />
+  <path d="M175 272 Q175 270 175 268" />
+  <path d="M190 284 L190 278 Q193 275 196 278 L196 284" />
+  <path d="M208 284 L208 275 Q212 272 216 275 L216 284" />
+  <path d="M212 272 Q212 270 212 268" />
+  <!-- Small stool/seat inside -->
+  <path d="M185 370 Q195 365 215 370" />
+  <path d="M188 370 L186 385" />
+  <path d="M212 370 L214 385" />
+  <path d="M200 370 L200 388" />
+  <!-- Mushrooms on bark - left side -->
+  <path d="M55 280 Q48 272 42 268 Q36 266 32 270 Q30 276 35 280 Q42 283 50 282" />
+  <path d="M50 282 L52 286" />
+  <path d="M60 295 Q54 288 48 285 Q42 284 40 288 Q38 293 42 296 Q48 298 55 296" />
+  <path d="M55 296 L57 300" />
+  <path d="M48 310 Q42 305 38 303 Q34 304 35 308 Q37 312 42 313" />
+  <!-- Mushrooms on bark - right side -->
+  <path d="M345 260 Q352 252 358 248 Q364 246 368 250 Q370 256 365 260 Q358 263 350 262" />
+  <path d="M350 262 L348 266" />
+  <path d="M340 278 Q346 270 352 268 Q358 266 360 270 Q362 275 358 278 Q352 280 346 278" />
+  <path d="M346 278 L344 282" />
+  <!-- Mushroom gills detail -->
+  <path d="M36 276 Q38 274 42 276" />
+  <path d="M42 292 Q44 290 48 292" />
+  <path d="M362 256 Q364 254 368 256" />
+  <path d="M356 274 Q358 272 362 274" />
+  <!-- Ferns at entrance - left -->
+  <path d="M105 390 Q95 370 88 350 Q82 335 80 320" />
+  <path d="M88 350 Q82 345 78 342" />
+  <path d="M88 350 Q84 355 80 358" />
+  <path d="M92 362 Q86 358 82 356" />
+  <path d="M92 362 Q88 366 84 370" />
+  <path d="M96 374 Q90 370 86 368" />
+  <path d="M96 374 Q92 378 88 382" />
+  <path d="M85 335 Q80 332 76 330" />
+  <path d="M85 335 Q82 340 78 343" />
+  <!-- Ferns at entrance - right -->
+  <path d="M295 390 Q305 370 312 350 Q318 335 320 320" />
+  <path d="M312 350 Q318 345 322 342" />
+  <path d="M312 350 Q316 355 320 358" />
+  <path d="M308 362 Q314 358 318 356" />
+  <path d="M308 362 Q312 366 316 370" />
+  <path d="M304 374 Q310 370 314 368" />
+  <path d="M304 374 Q308 378 312 382" />
+  <path d="M315 335 Q320 332 324 330" />
+  <path d="M315 335 Q318 340 322 343" />
+  <!-- Small fern curls -->
+  <path d="M80 320 Q76 315 78 310 Q82 308 84 312" />
+  <path d="M320 320 Q324 315 322 310 Q318 308 316 312" />
+  <!-- Firefly dots scattered around entrance -->
+  <circle cx="130" cy="250" r="2" />
+  <circle cx="150" cy="230" r="1.5" />
+  <circle cx="270" cy="245" r="2" />
+  <circle cx="255" cy="225" r="1.5" />
+  <circle cx="175" cy="200" r="1.5" />
+  <circle cx="225" cy="198" r="1.5" />
+  <circle cx="115" cy="300" r="1.5" />
+  <circle cx="285" cy="295" r="1.5" />
+  <circle cx="160" cy="180" r="1" />
+  <circle cx="240" cy="178" r="1" />
+  <circle cx="100" cy="340" r="1.5" />
+  <circle cx="300" cy="335" r="1.5" />
+  <!-- Moss/lichen texture on trunk -->
+  <path d="M65 160 Q68 155 72 158" />
+  <path d="M70 175 Q73 170 76 173" />
+  <path d="M335 158 Q332 153 328 156" />
+  <path d="M330 173 Q327 168 324 171" />
+  <!-- Ground details -->
+  <path d="M20 390 Q60 385 100 388 Q140 390 180 388 Q220 390 260 388 Q300 390 340 385 Q360 388 380 390" />
+  <!-- Small stones near entrance -->
+  <circle cx="115" cy="388" r="3" />
+  <circle cx="285" cy="386" r="3.5" />
+  <circle cx="125" cy="385" r="2" />
+</svg>

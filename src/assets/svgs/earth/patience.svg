@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Hourglass frame - top bar -->
+  <path d="M110 45 Q130 42 200 40 Q270 42 290 45" />
+  <path d="M110 55 Q130 52 200 50 Q270 52 290 55" />
+  <path d="M110 45 L110 55" />
+  <path d="M290 45 L290 55" />
+  <!-- Hourglass frame - bottom bar -->
+  <path d="M110 345 Q130 342 200 340 Q270 342 290 345" />
+  <path d="M110 355 Q130 352 200 350 Q270 352 290 355" />
+  <path d="M110 345 L110 355" />
+  <path d="M290 345 L290 355" />
+  <!-- Hourglass glass - upper bulb left -->
+  <path d="M120 55 Q115 70 112 90 Q108 115 110 140 Q115 165 130 180 Q150 195 175 198 Q188 199 200 200" />
+  <!-- Hourglass glass - upper bulb right -->
+  <path d="M280 55 Q285 70 288 90 Q292 115 290 140 Q285 165 270 180 Q250 195 225 198 Q212 199 200 200" />
+  <!-- Hourglass glass - lower bulb left -->
+  <path d="M200 200 Q175 201 150 205 Q130 212 120 228 Q112 248 110 270 Q108 295 112 315 Q115 330 120 345" />
+  <!-- Hourglass glass - lower bulb right -->
+  <path d="M200 200 Q225 201 250 205 Q270 212 280 228 Q288 248 290 270 Q292 295 288 315 Q285 330 280 345" />
+  <!-- Narrow neck of hourglass -->
+  <path d="M188 198 Q192 200 188 202" />
+  <path d="M212 198 Q208 200 212 202" />
+  <!-- Sand level in upper bulb -->
+  <path d="M135 150 Q155 145 175 148 Q190 146 200 150 Q210 146 225 148 Q245 145 265 150" />
+  <!-- Sand texture dots in upper portion -->
+  <circle cx="160" cy="155" r="1" />
+  <circle cx="180" cy="158" r="1" />
+  <circle cx="200" cy="156" r="1" />
+  <circle cx="220" cy="158" r="1" />
+  <circle cx="240" cy="155" r="1" />
+  <circle cx="170" cy="162" r="1" />
+  <circle cx="190" cy="164" r="1" />
+  <circle cx="210" cy="163" r="1" />
+  <circle cx="230" cy="161" r="1" />
+  <circle cx="150" cy="160" r="1" />
+  <circle cx="250" cy="160" r="1" />
+  <!-- Sand falling through center -->
+  <path d="M200 168 Q200 175 200 180" />
+  <path d="M200 184 Q200 188 200 192" />
+  <circle cx="200" cy="172" r="0.8" />
+  <circle cx="198" cy="178" r="0.8" />
+  <circle cx="202" cy="185" r="0.8" />
+  <circle cx="199" cy="190" r="0.8" />
+  <!-- Sand pile in bottom bulb -->
+  <path d="M180 285 Q188 275 200 270 Q212 275 220 285" />
+  <!-- Sand accumulation - bottom fill -->
+  <path d="M125 325 Q160 315 200 312 Q240 315 275 325" />
+  <!-- Sand dots in lower portion -->
+  <circle cx="165" cy="320" r="1" />
+  <circle cx="185" cy="318" r="1" />
+  <circle cx="200" cy="316" r="1" />
+  <circle cx="215" cy="318" r="1" />
+  <circle cx="235" cy="320" r="1" />
+  <circle cx="150" cy="328" r="1" />
+  <circle cx="175" cy="325" r="1" />
+  <circle cx="200" cy="322" r="1" />
+  <circle cx="225" cy="325" r="1" />
+  <circle cx="250" cy="328" r="1" />
+  <circle cx="140" cy="335" r="1" />
+  <circle cx="260" cy="335" r="1" />
+  <!-- Small plant growing in upper sand -->
+  <path d="M170 148 Q168 140 166 134 Q165 128 168 122" />
+  <path d="M168 130 Q162 126 158 120 Q162 118 166 122" />
+  <path d="M168 130 Q174 126 178 120 Q174 118 170 122" />
+  <path d="M168 136 Q164 132 160 128 Q163 126 166 130" />
+  <path d="M168 136 Q172 132 176 128 Q173 126 170 130" />
+  <!-- Small plant growing in bottom sand -->
+  <path d="M210 270 Q212 260 214 252 Q215 244 212 238" />
+  <path d="M212 248 Q207 243 204 237 Q208 235 212 240" />
+  <path d="M212 248 Q217 243 220 237 Q216 235 212 240" />
+  <path d="M212 255 Q208 250 205 245 Q209 244 212 248" />
+  <path d="M212 255 Q216 250 219 245 Q215 244 212 248" />
+  <!-- Tiny sprout in bottom sand -->
+  <path d="M190 312 Q189 308 190 304" />
+  <path d="M190 306 Q187 303 185 300" />
+  <path d="M190 306 Q193 303 195 300" />
+  <!-- Vine wrapping around hourglass - left side -->
+  <path d="M108 80 Q95 85 90 95 Q86 108 92 118 Q100 125 112 120" />
+  <path d="M112 120 Q120 115 122 105 Q118 95 108 95" />
+  <path d="M92 118 Q85 130 88 145 Q92 155 100 160" />
+  <path d="M100 160 Q108 165 112 158 Q115 150 108 145" />
+  <path d="M100 160 Q95 172 98 185 Q102 195 110 198" />
+  <!-- Vine wrapping - right side -->
+  <path d="M292 85 Q305 90 310 100 Q314 112 308 122 Q300 128 288 124" />
+  <path d="M288 124 Q280 118 278 108 Q282 98 292 98" />
+  <path d="M308 122 Q315 135 312 148 Q308 158 300 162" />
+  <path d="M300 162 Q292 168 288 160 Q285 152 292 148" />
+  <path d="M300 162 Q305 175 302 188 Q298 196 290 200" />
+  <!-- Small vine leaves -->
+  <path d="M90 95 Q83 90 80 85 Q85 82 90 88" />
+  <path d="M88 145 Q82 140 78 136 Q83 134 88 138" />
+  <path d="M310 100 Q317 95 320 90 Q315 88 310 92" />
+  <path d="M312 148 Q318 143 322 138 Q317 136 312 140" />
+  <!-- Vine tendrils -->
+  <path d="M80 85 Q76 80 78 75" />
+  <path d="M78 136 Q74 130 76 125" />
+  <path d="M320 90 Q324 84 322 78" />
+  <path d="M322 138 Q326 132 324 126" />
+  <!-- Decorative vine continuation down bottom -->
+  <path d="M110 198 Q105 215 108 235 Q112 250 118 260" />
+  <path d="M118 260 Q122 268 120 278 Q115 290 112 300" />
+  <path d="M290 200 Q295 218 292 238 Q288 252 282 262" />
+  <path d="M282 262 Q278 270 280 280 Q285 292 288 302" />
+  <!-- Lower vine leaves -->
+  <path d="M105 235 Q98 230 95 225 Q100 223 105 228" />
+  <path d="M115 290 Q108 285 105 280 Q110 278 115 283" />
+  <path d="M295 238 Q302 233 305 228 Q300 226 295 230" />
+  <path d="M285 292 Q292 287 295 282 Q290 280 285 285" />
+  <!-- Glass reflection lines -->
+  <path d="M128 75 Q126 85 125 95" />
+  <path d="M272 75 Q274 85 275 95" />
+  <path d="M125 260 Q123 270 122 280" />
+  <path d="M275 260 Q277 270 278 280" />
+  <!-- Small decorative dots near frame -->
+  <circle cx="130" cy="48" r="1.5" />
+  <circle cx="150" cy="46" r="1.5" />
+  <circle cx="250" cy="46" r="1.5" />
+  <circle cx="270" cy="48" r="1.5" />
+  <circle cx="130" cy="348" r="1.5" />
+  <circle cx="150" cy="346" r="1.5" />
+  <circle cx="250" cy="346" r="1.5" />
+  <circle cx="270" cy="348" r="1.5" />
+</svg>

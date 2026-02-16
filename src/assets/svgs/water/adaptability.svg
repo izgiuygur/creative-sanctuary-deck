@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<!-- Large rock left -->
+<path d="M80 160 Q70 140 75 118 Q82 95 100 82 Q118 72 138 78 Q155 86 162 105 Q168 125 160 148 Q152 168 138 180 Q120 190 100 188 Q85 185 80 175 Q78 168 80 160" />
+<!-- Rock texture - left -->
+<path d="M95 95 Q105 90 112 98" />
+<path d="M88 115 Q98 110 106 118" />
+<path d="M92 140 Q102 135 108 142" />
+<path d="M110 105 Q118 100 124 108" />
+<path d="M115 130 Q125 125 130 133" />
+<path d="M100 160 Q110 155 116 162" />
+<!-- Large rock center -->
+<path d="M210 200 Q195 178 198 152 Q205 128 225 112 Q248 100 272 108 Q292 118 300 142 Q305 168 295 192 Q282 215 262 225 Q240 232 222 225 Q208 218 205 208 Q204 204 210 200" />
+<!-- Rock texture - center -->
+<path d="M230 125 Q240 118 248 128" />
+<path d="M220 148 Q232 142 238 152" />
+<path d="M250 138 Q260 132 268 140" />
+<path d="M235 170 Q248 165 255 175" />
+<path d="M260 158 Q270 152 276 162" />
+<path d="M225 195 Q238 190 242 200" />
+<path d="M265 185 Q275 180 280 188" />
+<!-- Large rock right-bottom -->
+<path d="M300 310 Q288 290 292 268 Q300 248 318 238 Q338 232 355 240 Q370 252 375 275 Q378 298 368 318 Q355 335 338 340 Q318 342 305 332 Q295 322 300 310" />
+<!-- Rock texture - right-bottom -->
+<path d="M325 252 Q335 246 342 255" />
+<path d="M315 275 Q325 270 332 278" />
+<path d="M340 268 Q348 262 354 272" />
+<path d="M320 300 Q332 295 338 304" />
+<path d="M348 290 Q356 285 362 294" />
+<!-- Small rock upper right -->
+<path d="M330 120 Q325 108 330 98 Q338 90 348 94 Q356 100 355 112 Q352 122 345 128 Q338 130 332 126 Q328 124 330 120" />
+<path d="M338 102 Q344 98 348 105" />
+<!-- Small rock lower left -->
+<path d="M50 290 Q45 278 50 268 Q58 260 68 264 Q76 270 75 282 Q72 292 65 298 Q58 300 52 296 Q48 294 50 290" />
+<path d="M58 272 Q64 268 68 275" />
+<!-- Water flow - main current from top-left -->
+<path d="M0 80 Q25 75 50 82 Q65 88 72 95" />
+<path d="M0 100 Q20 95 40 100 Q55 108 65 118" />
+<path d="M0 120 Q15 115 30 122 Q45 130 55 142" />
+<!-- Water flowing around left rock (right side) -->
+<path d="M162 105 Q175 95 185 92 Q195 90 200 95" />
+<path d="M160 130 Q172 118 185 112 Q198 108 210 115" />
+<path d="M155 155 Q168 142 182 135 Q196 130 210 140" />
+<path d="M140 178 Q155 168 172 160 Q190 155 205 165" />
+<!-- Water flowing around left rock (left side) -->
+<path d="M75 118 Q60 128 52 142 Q45 158 42 175" />
+<path d="M80 160 Q68 168 58 180 Q50 195 48 210" />
+<path d="M85 180 Q72 190 62 205 Q55 220 52 235" />
+<!-- Water flowing between rocks -->
+<path d="M200 95 Q195 110 192 125 Q190 140 192 155 Q195 168 200 180" />
+<path d="M210 115 Q205 130 202 148 Q200 165 205 180 Q208 192 210 200" />
+<!-- Water flowing around center rock (right side) -->
+<path d="M300 142 Q312 135 325 132 Q335 130 340 132" />
+<path d="M295 170 Q310 160 325 155 Q338 152 348 155" />
+<path d="M290 195 Q305 185 322 180 Q340 178 355 182" />
+<path d="M275 218 Q292 210 310 205 Q330 202 348 208" />
+<!-- Water flowing around center rock (left side) -->
+<path d="M205 208 Q195 218 188 232 Q182 248 180 265" />
+<path d="M210 220 Q200 232 192 248 Q186 265 185 280" />
+<!-- Water converging below center rock -->
+<path d="M262 228 Q270 240 275 255 Q278 268 280 280" />
+<path d="M250 232 Q260 248 268 265 Q272 278 275 290" />
+<!-- Water flowing around bottom rock -->
+<path d="M280 280 Q285 292 288 305" />
+<path d="M292 268 Q290 285 292 298" />
+<path d="M370 310 Q380 300 388 295 Q395 292 400 295" />
+<path d="M368 328 Q378 320 390 315 Q398 312 400 315" />
+<!-- Lower water flow exiting -->
+<path d="M180 265 Q170 278 165 292 Q160 308 158 325 Q155 345 155 365 Q155 382 155 400" />
+<path d="M185 280 Q178 295 175 310 Q172 328 170 345 Q168 365 168 385 Q168 395 168 400" />
+<!-- Splash marks around rocks -->
+<path d="M68 100 Q65 95 62 98" />
+<path d="M165 100 Q168 95 172 98" />
+<path d="M192 115 Q188 110 185 114" />
+<path d="M302 138 Q305 132 308 136" />
+<path d="M288 268 Q285 262 282 266" />
+<!-- Foam/white water patterns -->
+<path d="M55 140 Q60 138 65 140 Q60 142 55 140" />
+<path d="M48 180 Q53 178 58 180 Q53 182 48 180" />
+<path d="M175 120 Q180 118 185 120 Q180 122 175 120" />
+<path d="M195 160 Q200 158 205 160 Q200 162 195 160" />
+<path d="M310 148 Q315 146 320 148 Q315 150 310 148" />
+<path d="M270 240 Q275 238 280 240 Q275 242 270 240" />
+<!-- Small fish navigating the current -->
+<path d="M170 240 Q178 236 186 240 Q178 244 170 240" />
+<path d="M166 240 L160 236" />
+<path d="M166 240 L160 244" />
+<path d="M100 220 Q108 216 116 220 Q108 224 100 220" />
+<path d="M96 220 L90 216" />
+<path d="M96 220 L90 224" />
+<!-- Bubbles -->
+<circle cx="65" cy="130" r="2" />
+<circle cx="175" cy="110" r="2.5" />
+<circle cx="195" cy="145" r="2" />
+<circle cx="310" cy="145" r="2" />
+<circle cx="280" cy="252" r="2.5" />
+<circle cx="175" cy="260" r="2" />
+<circle cx="165" cy="310" r="2" />
+<!-- Tiny water dots -->
+<circle cx="45" cy="160" r="1" />
+<circle cx="188" cy="100" r="1" />
+<circle cx="320" cy="160" r="1" />
+<circle cx="265" cy="250" r="1" />
+<circle cx="162" cy="340" r="1" />
+<circle cx="55" cy="250" r="1" />
+</svg>

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Profile of face on left side -->
+  <!-- Forehead and top of head -->
+  <path d="M60 80 Q75 60 100 55 Q125 52 140 60 Q155 70 158 85" />
+  <!-- Nose bridge and nose -->
+  <path d="M158 85 Q158 100 155 115 Q152 125 148 135 Q145 142 140 148 Q138 155 142 160 Q148 165 155 162 Q160 158 162 152" />
+  <!-- Upper lip to mouth -->
+  <path d="M162 152 Q164 158 162 165 Q160 170 155 175" />
+  <!-- Chin -->
+  <path d="M155 175 Q148 188 138 198 Q125 210 110 218 Q95 225 80 228" />
+  <!-- Back of head/neck -->
+  <path d="M80 228 Q70 230 62 238 Q55 248 52 260" />
+  <path d="M60 80 Q50 90 45 105 Q42 120 42 140 Q42 160 45 180 Q48 200 55 215 Q58 222 60 228" />
+  <!-- Eye -->
+  <path d="M128 100 Q135 96 142 100 Q148 104 142 108 Q135 112 128 108 Q122 104 128 100" />
+  <circle cx="136" cy="104" r="2" />
+  <!-- Eyebrow -->
+  <path d="M122 92 Q132 86 145 88 Q152 90 156 94" />
+  <!-- Nostril detail -->
+  <path d="M148 152 Q145 155 148 158" />
+  <!-- Ear hint -->
+  <path d="M52 120 Q45 125 43 135 Q42 145 48 150" />
+  <!-- Hair flowing back -->
+  <path d="M60 80 Q55 75 52 65 Q50 55 55 48 Q65 40 80 38 Q100 36 120 42 Q138 48 148 58" />
+  <path d="M55 75 Q48 72 42 68 Q38 60 42 52 Q48 45 60 42" />
+  <path d="M52 65 Q45 62 40 55 Q38 48 42 42" />
+  <!-- THE BREATH - Main breath flow starting from mouth -->
+  <!-- Primary breath swirl -->
+  <path d="M162 165 Q180 160 200 155 Q230 148 260 145 Q290 142 310 148 Q330 155 338 170 Q345 188 335 205 Q320 220 300 225 Q280 228 260 222 Q245 215 240 200 Q238 185 248 172 Q260 162 278 165 Q292 170 298 182 Q302 195 292 205" />
+  <!-- Secondary breath flow -->
+  <path d="M162 165 Q185 168 210 170 Q240 172 265 168 Q285 162 300 155 Q320 145 340 140 Q355 138 368 142" />
+  <!-- Third breath stream -->
+  <path d="M160 158 Q180 148 205 140 Q235 132 265 130 Q290 128 310 132 Q330 138 345 128 Q358 118 372 112" />
+  <!-- Leaves carried in the breath -->
+  <!-- Leaf 1 -->
+  <path d="M220 145 Q225 138 232 142 Q228 148 222 150" />
+  <path d="M225 140 L228 147" />
+  <!-- Leaf 2 -->
+  <path d="M280 155 Q285 148 292 152 Q288 158 282 160" />
+  <path d="M285 150 L288 157" />
+  <!-- Leaf 3 -->
+  <path d="M310 130 Q315 123 322 127 Q318 133 312 135" />
+  <path d="M315 125 L318 132" />
+  <!-- Leaf 4 -->
+  <path d="M350 145 Q355 138 362 142 Q358 148 352 150" />
+  <path d="M355 140 L358 147" />
+  <!-- Small leaves -->
+  <path d="M248 162 Q252 158 256 162 Q252 166 248 164" />
+  <path d="M332 155 Q336 151 340 155 Q336 159 332 157" />
+  <!-- Seeds floating in the breath -->
+  <path d="M270 138 L268 130 M270 138 L272 130 M270 138 L270 129" />
+  <circle cx="270" cy="138" r="1.5" />
+  <path d="M320 142 L318 134 M320 142 L322 134 M320 142 L320 133" />
+  <circle cx="320" cy="142" r="1.5" />
+  <path d="M365 125 L363 117 M365 125 L367 117 M365 125 L365 116" />
+  <circle cx="365" cy="125" r="1.5" />
+  <!-- Small birds carried in the wind -->
+  <!-- Bird 1 -->
+  <path d="M295 118 Q300 112 305 118" />
+  <path d="M295 118 Q300 115 305 118" />
+  <!-- Bird 2 -->
+  <path d="M345 108 Q350 102 355 108" />
+  <path d="M345 108 Q350 105 355 108" />
+  <!-- Bird 3 -->
+  <path d="M375 92 Q380 86 385 92" />
+  <path d="M375 92 Q380 89 385 92" />
+  <!-- Wind detail lines around the breath -->
+  <path d="M175 185 Q195 180 215 185" />
+  <path d="M185 200 Q205 195 225 200" />
+  <path d="M195 215 Q215 210 235 215" />
+  <path d="M290 230 Q310 225 330 230" />
+  <path d="M300 245 Q320 240 340 245" />
+  <!-- Swirl details -->
+  <path d="M260 195 Q265 190 272 192" />
+  <path d="M275 200 Q280 195 287 197" />
+  <path d="M330 175 Q335 170 342 172" />
+  <!-- Breath particles/dots -->
+  <circle cx="190" cy="152" r="1" />
+  <circle cx="210" cy="148" r="1.5" />
+  <circle cx="245" cy="140" r="1" />
+  <circle cx="295" cy="135" r="1" />
+  <circle cx="340" cy="130" r="1.5" />
+  <circle cx="370" cy="135" r="1" />
+  <circle cx="380" cy="148" r="1" />
+  <circle cx="310" cy="165" r="1" />
+  <circle cx="350" cy="160" r="1" />
+  <!-- Lower wind currents -->
+  <path d="M170 280 Q200 275 230 280" />
+  <path d="M200 300 Q230 295 260 300" />
+  <path d="M180 320 Q210 315 240 320" />
+  <!-- Ground texture -->
+  <path d="M20 360 Q60 355 100 358 Q140 361 180 356 Q220 352 260 358 Q300 362 340 357 Q360 355 380 358" />
+  <path d="M30 375 Q70 370 110 373 Q150 376 190 371 Q230 368 270 373 Q310 377 350 372 Q370 370 390 373" />
+  <!-- Extra wind swirl top right -->
+  <path d="M340 80 Q355 75 365 82 Q372 90 365 98 Q355 102 348 96" />
+  <path d="M360 65 Q375 60 385 68 Q392 78 382 88" />
+</svg>

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<!-- Egg cracking open with flames emerging, wings unfolding, shell fragments -->
+<!-- Egg shell - left half (cracked open, tilting left) -->
+<path d="M125 310 Q108 295 98 275 Q88 250 85 225 Q82 200 88 178 Q95 158 108 145 Q122 135 138 132 Q152 130 165 135 Q175 140 182 150" />
+<path d="M125 310 Q135 315 148 318 Q160 320 172 318 Q180 315 185 310" />
+<!-- Egg shell crack edge - left (jagged) -->
+<path d="M182 150 Q185 160 178 168 Q172 175 180 185 Q185 192 178 200 Q172 208 180 218 Q185 225 185 310" />
+<!-- Left shell inner texture -->
+<path d="M110 250 Q115 242 120 248" />
+<path d="M100 220 Q105 212 108 218" />
+<path d="M108 190 Q112 182 115 188" />
+<path d="M120 170 Q125 162 128 168" />
+<path d="M95 270 Q100 262 102 268" />
+<!-- Egg shell - right half (cracked open, tilting right) -->
+<path d="M275 310 Q292 295 302 275 Q312 250 315 225 Q318 200 312 178 Q305 158 292 145 Q278 135 262 132 Q248 130 235 135 Q225 140 218 150" />
+<path d="M275 310 Q265 315 252 318 Q240 320 228 318 Q220 315 215 310" />
+<!-- Egg shell crack edge - right (jagged) -->
+<path d="M218 150 Q215 160 222 168 Q228 175 220 185 Q215 192 222 200 Q228 208 220 218 Q215 225 215 310" />
+<!-- Right shell inner texture -->
+<path d="M290 250 Q285 242 280 248" />
+<path d="M300 220 Q295 212 292 218" />
+<path d="M292 190 Q288 182 285 188" />
+<path d="M280 170 Q275 162 272 168" />
+<path d="M305 270 Q300 262 298 268" />
+<!-- Shell crack detail lines -->
+<path d="M182 150 Q188 145 192 150 Q195 158 190 162" />
+<path d="M218 150 Q212 145 208 150 Q205 158 210 162" />
+<!-- Flames emerging from center of egg -->
+<!-- Central flame column -->
+<path d="M200 220 Q192 195 188 170 Q185 148 190 125 Q195 105 200 90 Q205 75 200 58 Q195 75 205 105 Q210 125 212 148 Q215 170 208 195" />
+<path d="M200 218 Q195 198 193 178 Q190 155 194 135 Q198 118 200 105 Q202 118 206 135 Q210 155 207 178 Q205 198 200 218" />
+<!-- Inner flame core -->
+<path d="M200 210 Q197 195 196 180 Q195 165 198 148 Q200 138 200 128 Q200 138 202 148 Q205 165 204 180 Q203 195 200 210" />
+<!-- Left flame wing unfurling -->
+<path d="M195 180 Q178 165 160 155 Q142 148 125 150 Q110 155 102 165 Q98 178 105 190 Q115 200 130 198 Q148 194 165 182 Q180 170 195 180" />
+<path d="M192 170 Q175 158 158 150 Q142 145 128 148 Q118 152 112 162 Q108 175 115 185 Q125 192 140 190 Q158 185 172 175 Q185 165 192 170" />
+<!-- Left flame wing inner feather lines -->
+<path d="M165 162 Q155 158 148 162" />
+<path d="M145 158 Q138 155 132 160" />
+<path d="M128 165 Q122 162 118 168" />
+<path d="M155 172 Q148 170 142 175" />
+<!-- Right flame wing unfurling -->
+<path d="M205 180 Q222 165 240 155 Q258 148 275 150 Q290 155 298 165 Q302 178 295 190 Q285 200 270 198 Q252 194 235 182 Q220 170 205 180" />
+<path d="M208 170 Q225 158 242 150 Q258 145 272 148 Q282 152 288 162 Q292 175 285 185 Q275 192 260 190 Q242 185 228 175 Q215 165 208 170" />
+<!-- Right flame wing inner feather lines -->
+<path d="M235 162 Q245 158 252 162" />
+<path d="M255 158 Q262 155 268 160" />
+<path d="M272 165 Q278 162 282 168" />
+<path d="M245 172 Q252 170 258 175" />
+<!-- Upper flame tips -->
+<path d="M200 58 Q196 45 200 32 Q204 20 200 10" />
+<path d="M195 68 Q190 55 194 42 Q198 32 195 22" />
+<path d="M205 68 Q210 55 206 42 Q202 32 205 22" />
+<path d="M188 82 Q182 68 185 55 Q188 45 185 35" />
+<path d="M212 82 Q218 68 215 55 Q212 45 215 35" />
+<!-- Side flames reaching out -->
+<path d="M102 165 Q92 152 88 138 Q85 125 90 115 Q95 108 100 112" />
+<path d="M298 165 Q308 152 312 138 Q315 125 310 115 Q305 108 300 112" />
+<!-- Shell fragments floating -->
+<path d="M145 120 Q142 115 145 110 Q148 108 152 110 Q155 115 152 118 Q148 120 145 120" />
+<path d="M255 118 Q258 112 262 110 Q265 108 268 112 Q270 118 265 120 Q260 120 255 118" />
+<path d="M120 140 Q118 135 120 130 Q123 128 126 132 Q128 136 125 138" />
+<path d="M280 138 Q282 133 285 130 Q288 128 290 132 Q292 137 288 140" />
+<path d="M168 105 Q165 100 168 96 Q172 95 175 98 Q176 102 172 105" />
+<path d="M232 102 Q235 98 238 96 Q242 95 244 100 Q244 104 240 106" />
+<!-- Rising sparks -->
+<circle cx="180" cy="48" r="2.5" />
+<circle cx="220" cy="45" r="2.5" />
+<circle cx="200" cy="5" r="2" />
+<circle cx="170" cy="60" r="2" />
+<circle cx="230" cy="58" r="2" />
+<circle cx="190" cy="25" r="2" />
+<circle cx="210" cy="22" r="2" />
+<circle cx="160" cy="75" r="1.5" />
+<circle cx="240" cy="72" r="1.5" />
+<circle cx="175" cy="18" r="1.5" />
+<circle cx="225" cy="15" r="1.5" />
+<!-- Ember glow at base -->
+<circle cx="190" cy="310" r="2" />
+<circle cx="210" cy="308" r="2" />
+<circle cx="200" cy="315" r="2.5" />
+<circle cx="175" cy="315" r="1.5" />
+<circle cx="225" cy="312" r="1.5" />
+<!-- Ground embers -->
+<path d="M130 340 Q150 335 170 338 Q190 340 200 338 Q210 340 230 338 Q250 335 270 340" />
+<path d="M140 350 Q160 345 180 348 Q200 350 220 348 Q240 345 260 350" />
+<!-- Tiny scattered embers -->
+<circle cx="150" cy="345" r="1.5" />
+<circle cx="250" cy="342" r="1.5" />
+<circle cx="180" cy="348" r="1" />
+<circle cx="220" cy="346" r="1" />
+<circle cx="200" cy="352" r="1.5" />
+</svg>

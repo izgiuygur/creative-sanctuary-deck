@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<!-- Surface waves at top -->
+<path d="M0 35 Q20 28 40 35 Q60 42 80 35 Q100 28 120 35 Q140 42 160 35 Q180 28 200 35 Q220 42 240 35 Q260 28 280 35 Q300 42 320 35 Q340 28 360 35 Q380 42 400 35" />
+<path d="M0 45 Q25 38 50 45 Q75 52 100 45 Q125 38 150 45 Q175 52 200 45 Q225 38 250 45 Q275 52 300 45 Q325 38 350 45 Q375 52 400 45" />
+<!-- Light rays from surface -->
+<path d="M80 45 Q90 100 100 160 Q108 210 115 260" />
+<path d="M130 45 Q135 95 140 150 Q144 200 148 250" />
+<path d="M200 45 Q200 100 200 160 Q200 210 200 260" />
+<path d="M270 45 Q265 95 260 150 Q256 200 252 250" />
+<path d="M320 45 Q310 100 300 160 Q292 210 285 260" />
+<!-- Diver figure descending -->
+<path d="M195 110 Q190 105 195 98 Q200 92 205 98 Q210 105 205 110 Q200 114 195 110" />
+<path d="M200 114 L200 155" />
+<path d="M200 125 Q185 135 175 145" />
+<path d="M200 125 Q215 135 225 145" />
+<path d="M200 155 Q190 170 182 185" />
+<path d="M200 155 Q210 170 218 185" />
+<!-- Diver's bubble trail -->
+<circle cx="195" cy="95" r="3" />
+<circle cx="190" cy="85" r="2.5" />
+<circle cx="188" cy="74" r="2" />
+<circle cx="192" cy="64" r="1.5" />
+<circle cx="189" cy="55" r="1" />
+<!-- Schools of small fish - upper left -->
+<path d="M50 90 Q58 86 66 90 Q58 94 50 90" />
+<path d="M46 90 L40 86" />
+<path d="M46 90 L40 94" />
+<path d="M60 105 Q68 101 76 105 Q68 109 60 105" />
+<path d="M56 105 L50 101" />
+<path d="M56 105 L50 109" />
+<path d="M45 115 Q53 111 61 115 Q53 119 45 115" />
+<path d="M41 115 L35 111" />
+<path d="M41 115 L35 119" />
+<!-- Fish - middle right -->
+<path d="M290 130 Q300 124 312 130 Q300 136 290 130" />
+<path d="M285 130 L278 124" />
+<path d="M285 130 L278 136" />
+<path d="M305 145 Q315 140 325 145 Q315 150 305 145" />
+<path d="M300 145 L294 140" />
+<path d="M300 145 L294 150" />
+<!-- Larger fish -->
+<path d="M310 220 Q325 210 345 218 Q358 225 345 232 Q325 240 310 230 Q305 225 310 220" />
+<path d="M302 225 L290 218" />
+<path d="M302 225 L290 232" />
+<circle cx="340" cy="222" r="2" />
+<!-- Seaweed clusters left -->
+<path d="M30 400 Q25 370 35 340 Q40 310 32 280 Q28 260 35 240" />
+<path d="M45 400 Q42 375 48 350 Q52 325 45 300 Q40 280 48 260" />
+<path d="M58 400 Q55 380 60 360 Q65 340 58 320 Q54 305 60 285" />
+<!-- Seaweed clusters right -->
+<path d="M340 400 Q345 375 338 350 Q332 325 340 300 Q345 280 338 260" />
+<path d="M358 400 Q362 370 355 340 Q348 315 358 290 Q363 270 356 250" />
+<path d="M372 400 Q375 380 370 360 Q365 340 372 320" />
+<!-- Coral formations bottom center-left -->
+<path d="M100 400 Q95 380 100 365 Q108 350 115 360 Q120 370 125 365 Q132 355 128 345 Q122 335 130 325" />
+<path d="M115 400 Q120 385 118 370 Q114 358 120 348 Q128 340 135 350" />
+<path d="M85 400 Q80 385 88 370 Q95 360 90 348 Q85 338 92 328" />
+<!-- Coral formations bottom right -->
+<path d="M260 400 Q265 385 262 370 Q258 355 265 342 Q272 335 278 345 Q282 355 288 348 Q295 340 290 330" />
+<path d="M275 400 Q280 388 276 375 Q272 362 278 350" />
+<path d="M248 400 Q245 390 250 378 Q258 368 252 355" />
+<!-- Small coral polyps -->
+<circle cx="130" cy="325" r="2" />
+<circle cx="125" cy="340" r="1.5" />
+<circle cx="92" cy="330" r="1.5" />
+<circle cx="290" cy="332" r="2" />
+<circle cx="278" cy="348" r="1.5" />
+<!-- Scattered bubbles throughout -->
+<circle cx="70" cy="150" r="2" />
+<circle cx="150" cy="200" r="3" />
+<circle cx="250" cy="180" r="2" />
+<circle cx="320" cy="160" r="2.5" />
+<circle cx="100" cy="250" r="2" />
+<circle cx="230" cy="280" r="3" />
+<circle cx="170" cy="310" r="2" />
+<circle cx="330" cy="300" r="2.5" />
+<circle cx="55" cy="200" r="1.5" />
+<circle cx="350" cy="250" r="1.5" />
+<!-- Tiny floating particles -->
+<circle cx="160" cy="120" r="1" />
+<circle cx="240" cy="100" r="1" />
+<circle cx="110" cy="175" r="1" />
+<circle cx="300" cy="200" r="1" />
+<circle cx="180" cy="260" r="1" />
+<circle cx="60" cy="300" r="1" />
+<circle cx="340" cy="350" r="1" />
+<!-- Jellyfish in mid-depth -->
+<path d="M70 270 Q60 262 58 252 Q58 240 70 235 Q82 240 82 252 Q80 262 70 270" />
+<path d="M62 270 Q60 285 63 300" />
+<path d="M70 272 Q68 290 72 305" />
+<path d="M78 270 Q80 285 77 300" />
+<!-- Small starfish on bottom -->
+<path d="M190 390 L195 378 L200 390" />
+<path d="M190 390 L180 383 L190 385" />
+<path d="M200 390 L210 383 L200 385" />
+<path d="M192 390 L188 398" />
+<path d="M198 390 L202 398" />
+<!-- Water depth gradient lines -->
+<path d="M0 140 Q50 138 100 140 Q150 142 200 140" />
+<path d="M200 140 Q250 138 300 140 Q350 142 400 140" />
+<path d="M0 220 Q60 218 120 220 Q180 222 240 220 Q300 218 360 220 Q380 221 400 220" />
+</svg>

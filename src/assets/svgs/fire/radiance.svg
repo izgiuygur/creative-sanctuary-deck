@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<!-- Intricate sun with detailed patterned rays, corona, and stars -->
+<!-- Central sun disc - outer ring -->
+<circle cx="200" cy="200" r="55" />
+<!-- Inner rings -->
+<circle cx="200" cy="200" r="45" />
+<circle cx="200" cy="200" r="35" />
+<circle cx="200" cy="200" r="22" />
+<!-- Inner sun pattern - radiating from center -->
+<path d="M200 178 L200 165" />
+<path d="M200 222 L200 235" />
+<path d="M178 200 L165 200" />
+<path d="M222 200 L235 200" />
+<path d="M185 185 L175 175" />
+<path d="M215 215 L225 225" />
+<path d="M215 185 L225 175" />
+<path d="M185 215 L175 225" />
+<!-- Sun face suggestion -->
+<circle cx="190" cy="192" r="4" />
+<circle cx="210" cy="192" r="4" />
+<path d="M190 210 Q195 218 200 220 Q205 218 210 210" />
+<path d="M185 188 Q190 184 195 188" />
+<path d="M205 188 Q210 184 215 188" />
+<!-- Major rays - North -->
+<path d="M200 145 Q195 120 192 95 Q190 72 195 50 Q198 35 200 25" />
+<path d="M200 145 Q205 120 208 95 Q210 72 205 50 Q202 35 200 25" />
+<path d="M195 140 Q190 118 188 98 Q186 78 190 58" />
+<path d="M205 140 Q210 118 212 98 Q214 78 210 58" />
+<!-- Ray pattern - North -->
+<path d="M196 115 Q192 108 196 100" />
+<path d="M204 115 Q208 108 204 100" />
+<path d="M198 80 Q195 72 198 65" />
+<path d="M202 80 Q205 72 202 65" />
+<!-- Major rays - South -->
+<path d="M200 255 Q195 280 192 305 Q190 328 195 350 Q198 365 200 375" />
+<path d="M200 255 Q205 280 208 305 Q210 328 205 350 Q202 365 200 375" />
+<path d="M195 260 Q190 282 188 302 Q186 322 190 342" />
+<path d="M205 260 Q210 282 212 302 Q214 322 210 342" />
+<!-- Ray pattern - South -->
+<path d="M196 285 Q192 292 196 300" />
+<path d="M204 285 Q208 292 204 300" />
+<!-- Major rays - East -->
+<path d="M255 200 Q280 195 305 192 Q328 190 350 195 Q365 198 375 200" />
+<path d="M255 200 Q280 205 305 208 Q328 210 350 205 Q365 202 375 200" />
+<path d="M260 195 Q282 190 302 188 Q322 186 342 190" />
+<path d="M260 205 Q282 210 302 212 Q322 214 342 210" />
+<!-- Ray pattern - East -->
+<path d="M285 196 Q292 192 300 196" />
+<path d="M285 204 Q292 208 300 204" />
+<!-- Major rays - West -->
+<path d="M145 200 Q120 195 95 192 Q72 190 50 195 Q35 198 25 200" />
+<path d="M145 200 Q120 205 95 208 Q72 210 50 205 Q35 202 25 200" />
+<path d="M140 195 Q118 190 98 188 Q78 186 58 190" />
+<path d="M140 205 Q118 210 98 212 Q78 214 58 210" />
+<!-- Ray pattern - West -->
+<path d="M115 196 Q108 192 100 196" />
+<path d="M115 204 Q108 208 100 204" />
+<!-- Diagonal rays - NE -->
+<path d="M240 160 Q258 142 278 125 Q295 110 315 100 Q330 92 340 88" />
+<path d="M240 160 Q262 148 282 132 Q300 118 318 108 Q332 100 342 95" />
+<path d="M242 155 Q260 138 280 120 Q298 105 315 95" />
+<!-- Diagonal ray flame tongues - NE -->
+<path d="M270 132 Q275 125 270 118" />
+<path d="M298 110 Q302 102 298 96" />
+<!-- Diagonal rays - NW -->
+<path d="M160 160 Q142 142 122 125 Q105 110 85 100 Q70 92 60 88" />
+<path d="M160 160 Q138 148 118 132 Q100 118 82 108 Q68 100 58 95" />
+<path d="M158 155 Q140 138 120 120 Q102 105 85 95" />
+<!-- Diagonal ray flame tongues - NW -->
+<path d="M130 132 Q125 125 130 118" />
+<path d="M102 110 Q98 102 102 96" />
+<!-- Diagonal rays - SE -->
+<path d="M240 240 Q258 258 278 275 Q295 290 315 300 Q330 308 340 312" />
+<path d="M240 240 Q262 252 282 268 Q300 282 318 292 Q332 300 342 305" />
+<path d="M242 245 Q260 262 280 280 Q298 295 315 305" />
+<!-- Diagonal ray flame tongues - SE -->
+<path d="M270 268 Q275 275 270 282" />
+<!-- Diagonal rays - SW -->
+<path d="M160 240 Q142 258 122 275 Q105 290 85 300 Q70 308 60 312" />
+<path d="M160 240 Q138 252 118 268 Q100 282 82 292 Q68 300 58 305" />
+<path d="M158 245 Q140 262 120 280 Q102 295 85 305" />
+<!-- Diagonal ray flame tongues - SW -->
+<path d="M130 268 Q125 275 130 282" />
+<!-- Corona effects - wavy heat lines between major rays -->
+<path d="M218 148 Q225 130 235 118 Q245 108 252 102" />
+<path d="M182 148 Q175 130 165 118 Q155 108 148 102" />
+<path d="M252 182 Q268 175 280 168 Q290 160 298 152" />
+<path d="M252 218 Q268 225 280 232 Q290 240 298 248" />
+<path d="M148 182 Q132 175 120 168 Q110 160 102 152" />
+<path d="M148 218 Q132 225 120 232 Q110 240 102 248" />
+<path d="M218 252 Q225 268 235 280 Q245 290 252 298" />
+<path d="M182 252 Q175 268 165 280 Q155 290 148 298" />
+<!-- Small flame tongues on corona -->
+<path d="M230 140 Q232 132 228 125" />
+<path d="M170 140 Q168 132 172 125" />
+<path d="M260 192 Q268 190 272 194" />
+<path d="M140 192 Q132 190 128 194" />
+<!-- Stars scattered around -->
+<path d="M55 55 L55 45 M50 50 L60 50" />
+<path d="M345 60 L345 50 M340 55 L350 55" />
+<path d="M50 340 L50 330 M45 335 L55 335" />
+<path d="M350 345 L350 335 M345 340 L355 340" />
+<path d="M30 150 L30 142 M26 146 L34 146" />
+<path d="M370 155 L370 147 M366 151 L374 151" />
+<path d="M35 260 L35 252 M31 256 L39 256" />
+<path d="M365 265 L365 257 M361 261 L369 261" />
+<!-- Tiny star dots -->
+<circle cx="75" cy="35" r="1.5" />
+<circle cx="325" cy="38" r="1.5" />
+<circle cx="22" cy="200" r="1.5" />
+<circle cx="378" cy="198" r="1.5" />
+<circle cx="70" cy="365" r="1.5" />
+<circle cx="330" cy="362" r="1.5" />
+<circle cx="42" cy="120" r="1" />
+<circle cx="358" cy="118" r="1" />
+<circle cx="45" cy="285" r="1" />
+<circle cx="355" cy="282" r="1" />
+<circle cx="120" cy="30" r="1" />
+<circle cx="280" cy="28" r="1" />
+<circle cx="125" cy="370" r="1" />
+<circle cx="275" cy="368" r="1" />
+</svg>
