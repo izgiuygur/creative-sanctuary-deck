@@ -211,14 +211,59 @@ select {
   grid-area: hand;
   justify-self: start;
   align-self: end;
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
   text-align: left;
   font: italic 400 19px/24px var(--font-voice);
   animation: nudge 0.5s ease both;
 }
 
-.handbtn:hover {
+.handbtn:hover .handbtn__label {
   text-decoration: underline;
   text-underline-offset: 5px;
+}
+
+.handbtn__cards {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.handbtn__card,
+.handbtn__slot {
+  display: block;
+  width: 42px;
+  height: 72px;
+  border-radius: 5px;
+}
+
+.handbtn__card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transform: rotate(var(--tilt, 0deg));
+  box-shadow: 0 3px 8px rgba(18, 48, 95, 0.18);
+  transition: transform 0.2s ease;
+}
+
+.handbtn__card + .handbtn__card {
+  margin-left: -6px;
+}
+
+.handbtn__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.handbtn:hover .handbtn__card {
+  transform: rotate(var(--tilt, 0deg)) translateY(-4px);
+}
+
+/* Before anything is kept: an empty place where cards will land. */
+.handbtn__slot {
+  border: 1.5px dashed color-mix(in srgb, var(--ink) 45%, transparent);
 }
 
 .credit {
@@ -604,12 +649,10 @@ select {
 }
 
 /* Beside the card the words take the page's ink, except Fire, which keeps its red. */
-.reveal__eyebrow,
 .reveal__quote {
   color: var(--ink);
 }
 
-[data-element='fire'] > .reveal__eyebrow,
 [data-element='fire'] > .reveal__quote,
 .slot__quote[data-element='fire'] {
   color: var(--fire);
@@ -897,7 +940,6 @@ select {
     width: auto;
     align-items: center;
   }
-  .reveal__eyebrow,
   .reveal__quote {
     display: none;
   }
@@ -971,8 +1013,19 @@ select {
   }
   .handbtn {
     justify-self: center;
-    text-align: center;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
     font-size: 17px;
+  }
+  .handbtn__card,
+  .handbtn__slot {
+    width: 26px;
+    height: 45px;
+    border-radius: 4px;
+  }
+  .handbtn__card {
+    padding: 2px;
   }
   /* No room beside the hand on a phone: the credit takes its own line underneath. */
   .credit {
@@ -986,7 +1039,7 @@ select {
     flex-direction: column;
   }
   .deck-wrap {
-    --card-w: min(230px, 60vw, calc((100dvh - 430px) * var(--card-ratio)));
+    --card-w: min(230px, 60vw, calc((100dvh - 470px) * var(--card-ratio)));
     display: flex;
     flex-direction: column;
     align-items: center;

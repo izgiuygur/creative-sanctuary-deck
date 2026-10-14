@@ -456,9 +456,6 @@ export default function DeckScene() {
         {view === 'deck' && mode === 'single' && current && (
           <div className="reveal" key={current.id}>
             <div className="reveal__text" ref={revealTextRef} data-element={current.element}>
-              <p className="eyebrow reveal__eyebrow">
-                You drew {current.word} · {elements[current.element].name}
-              </p>
               <p className="reveal__quote">{current.quote}</p>
               <div className="actions">
                 {hand.length < HAND_LIMIT && !alreadyKept ? (
@@ -646,7 +643,23 @@ export default function DeckScene() {
 
       {view === 'deck' && (
         <button type="button" className="handbtn" ref={handBtnRef} onClick={() => !busy && setView('hand')} key={hand.length}>
-          {handLabel}
+          {/* Little versions of the kept cards, so "Keep it" has somewhere visible to go. */}
+          <span className="handbtn__cards" aria-hidden="true">
+            {hand.length === 0 ? (
+              <span className="handbtn__slot" />
+            ) : (
+              hand.map((c, i) => (
+                <span
+                  key={c.id}
+                  className="handbtn__card"
+                  style={{ background: elements[c.element].bgColorHex, '--tilt': `${(i % 2 ? 4 : -4) + i}deg` } as React.CSSProperties}
+                >
+                  <img src={`/art/${c.svgPath}`} alt="" />
+                </span>
+              ))
+            )}
+          </span>
+          <span className="handbtn__label">{handLabel}</span>
         </button>
       )}
 
