@@ -4,9 +4,9 @@ import posthog from 'posthog-js';
  * PostHog project key (starts with phc_). It's a public key, safe to ship in the page.
  * Empty means analytics stays off.
  */
-const POSTHOG_KEY = '';
+const POSTHOG_KEY = 'phc_Bf5h8G6K7KCKkUK9z9ynR53bk6ZyUws8ijFj3TTeP8ua';
 /** 'https://eu.i.posthog.com' or 'https://us.i.posthog.com', matching the project's region. */
-const POSTHOG_HOST = 'https://eu.i.posthog.com';
+const POSTHOG_HOST = 'https://us.i.posthog.com';
 
 let started = false;
 
