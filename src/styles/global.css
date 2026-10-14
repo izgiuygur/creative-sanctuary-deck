@@ -128,6 +128,55 @@ select {
   font: italic 400 18px/24px var(--font-voice);
 }
 
+/* Chunky little tabs with a hard shadow: clearly buttons, but smaller than the words they sit under. */
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 15px 6px 11px;
+  --tab-line: var(--ink);
+  border: 1.5px solid var(--tab-line);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 3px 3px 0 var(--tab-line);
+  font: 500 14px/20px var(--font-ui);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+/* Hovering lights it up in the deck's yellow; the words stay navy in both themes. */
+.tab:hover,
+.tab:focus-visible {
+  background: #f6ec5e;
+  color: #1a407d;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--tab-line);
+}
+
+.tab:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--tab-line);
+}
+
+/* Controls that swap places between wide screens and phones. */
+@media (min-width: 761px) {
+  .phone-only {
+    display: none !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .wide-only {
+    display: none !important;
+  }
+}
+
+.tab__icon {
+  flex-shrink: 0;
+  height: 18px;
+  width: auto;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -149,6 +198,8 @@ select {
     'hand hand hand';
   column-gap: 24px;
   padding: 40px 44px;
+  /* The open card's coloured shape can reach past the window; it shouldn't make the page scroll. */
+  overflow: clip;
   animation: fade-in 0.7s ease both;
 }
 
@@ -183,6 +234,8 @@ select {
 
 .masthead {
   grid-area: word;
+  position: relative;
+  z-index: 2;
   text-align: center;
 }
 
@@ -638,8 +691,33 @@ html[data-theme='dark'] .reveal__card .flip {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(40px, 7vw, 110px);
+  gap: clamp(32px, 3.5vw, 56px);
   width: 100%;
+}
+
+/* The words sit above the coloured shape, which reaches across from behind the card. */
+.reveal__text {
+  position: relative;
+  z-index: 1;
+}
+
+/* At night the pale suit colour would swallow the cream words, so it turns into a soft glow. */
+html[data-theme='dark'] .swash--pebble path {
+  fill-opacity: 0.22;
+}
+
+/* Wide screens: a tilted pebble, mostly behind the card, reaching under the end of the quote.
+   Placed from its top-left corner and turned around it, exactly as drawn in Paper. */
+@media (min-width: 1000px) {
+  .reveal .swash--pebble {
+    left: -14%;
+    top: -42.4%;
+    width: 216%;
+    aspect-ratio: 799 / 843;
+    transform: none;
+    transform-origin: 0 0;
+    rotate: 30deg;
+  }
 }
 
 .reveal .card,
@@ -651,7 +729,7 @@ html[data-theme='dark'] .reveal__card .flip {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 26px;
+  gap: 48px;
   width: min(500px, 36vw);
 }
 
@@ -1019,6 +1097,14 @@ html[data-theme='dark'] .reveal__card .flip {
       'credit';
     grid-template-rows: auto auto 1fr auto auto;
   }
+  /* No suit list here; left in, it would make a phantom column and push the page off centre. */
+  .app[data-view='hand'] .suits,
+  .app[data-view='kept'] .suits {
+    display: none;
+  }
+  .app {
+    column-gap: 0;
+  }
   .wordmark {
     font-size: 24px;
   }
@@ -1137,7 +1223,15 @@ html[data-theme='dark'] .reveal__card .flip {
   }
   .reveal .card,
   .kept .card {
-    --card-w: min(92vw, calc((100dvh - 225px) * var(--card-ratio)));
+    --card-w: min(92vw, calc((100dvh - 245px) * var(--card-ratio)));
+  }
+  /* Room between the open card and its buttons. */
+  .reveal {
+    gap: 36px;
+  }
+  /* A kept card also has the card-to-card arrows under it, so it gives up a little height. */
+  .kept .card {
+    --card-w: min(92vw, calc((100dvh - 330px) * var(--card-ratio)));
   }
   .reveal .card-front__title,
   .kept .card-front__title {
@@ -1167,8 +1261,13 @@ html[data-theme='dark'] .reveal__card .flip {
     font-size: 18px;
   }
 
+  /* Two cards to a row. */
   .hand__row {
     --card-w: min(150px, 40vw);
+    display: grid;
+    grid-template-columns: repeat(2, var(--card-w));
+    justify-content: center;
+    gap: 16px;
   }
 
   .kept {

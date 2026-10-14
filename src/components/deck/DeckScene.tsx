@@ -23,10 +23,39 @@ if (import.meta.env.DEV && typeof window !== 'undefined') {
 }
 
 /** The suit's colour, as a soft shape behind a single card. The page itself stays paper. */
-function SuitSwash({ color, swashRef }: { color: string; swashRef?: React.Ref<SVGSVGElement> }) {
+function SuitSwash({ color, swashRef, pebble }: { color: string; swashRef?: React.Ref<SVGSVGElement>; pebble?: boolean }) {
   return (
-    <svg className="swash swash--suit" viewBox="0 0 640 720" aria-hidden="true" ref={swashRef}>
-      <path d="M120 170 C210 50 450 40 540 170 C620 290 610 500 510 610 C410 710 210 700 110 590 C20 490 40 270 120 170 Z" fill={color} />
+    <svg className={`swash swash--suit${pebble ? ' swash--pebble' : ''}`} viewBox="0 0 640 720" aria-hidden="true" ref={swashRef}>
+      <path
+        d={
+          pebble
+            ? 'M170 110 C260 40 440 50 530 140 C615 225 610 370 575 480 C535 600 430 685 300 672 C175 660 75 585 52 455 C30 330 80 180 170 110 Z'
+            : 'M120 170 C210 50 450 40 540 170 C620 290 610 500 510 610 C410 710 210 700 110 590 C20 490 40 270 120 170 Z'
+        }
+        fill={color}      />
+    </svg>
+  );
+}
+
+/** A little stack of cards, for "back to the deck". */
+function DeckIcon() {
+  return (
+    <svg className="tab__icon" width="18" height="22" viewBox="0 0 40 48" aria-hidden="true">
+      <rect x="11" y="2" width="26" height="37" rx="4" fill="none" stroke="currentColor" strokeWidth="3" />
+      <rect x="7" y="5" width="26" height="37" rx="4" fill="var(--paper)" stroke="currentColor" strokeWidth="3" />
+      <rect x="2" y="9" width="27" height="37" rx="4" fill="currentColor" />
+      <circle cx="15.5" cy="27.5" r="4" fill="#f6ec5e" />
+    </svg>
+  );
+}
+
+/** A hand holding a card, for "keep in my hand". */
+function HandIcon() {
+  return (
+    <svg className="tab__icon" width="22" height="22" viewBox="0 0 48 48" aria-hidden="true">
+      <rect x="14" y="2" width="22" height="32" rx="3" transform="rotate(-10 25 18)" fill="var(--paper)" stroke="currentColor" strokeWidth="3" />
+      <path d="M12 47 L11 36 C9 30 12 26 16 27 C17 23 22 23 23 27 C24 23 29 23 30 27 C31 23 36 23 37 28 C41 28 42 33 40 37 L36 47 Z" fill="currentColor" />
+      <path d="M19.5 27.5 V32 M26.5 27.5 V32 M33.5 28.5 V33" stroke="var(--paper)" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -391,9 +420,15 @@ export default function DeckScene() {
           </button>
         )}
         {view === 'kept' && (
-          <button type="button" className="navlink navlink--back" onClick={() => setView('hand')}>
-            Back to your hand
-          </button>
+          <>
+            <button type="button" className="navlink navlink--back wide-only" onClick={() => setView('hand')}>
+              Back to your hand
+            </button>
+            {/* On a phone the two swap: going back is the button under the card, letting go is up here. */}
+            <button type="button" className="navlink phone-only" onClick={letGo}>
+              Let it go
+            </button>
+          </>
         )}
       </nav>
 
@@ -483,12 +518,14 @@ export default function DeckScene() {
               <p className="reveal__quote">{current.quote}</p>
               {/* Putting it back is the everyday move; keeping a card is the deliberate one. */}
               <div className="actions">
-                <button type="button" className="pill" onClick={putBack}>
-                  Put it back
+                <button type="button" className="tab" onClick={putBack}>
+                  <DeckIcon />
+                  Back to the deck
                 </button>
                 {hand.length < HAND_LIMIT && !alreadyKept ? (
-                  <button type="button" className="textlink" onClick={keepCurrent}>
-                    Keep it in my hand
+                  <button type="button" className="tab" onClick={keepCurrent}>
+                    <HandIcon />
+                    Keep in my hand
                   </button>
                 ) : (
                   <span className="aside">{alreadyKept ? 'Already in your hand.' : 'Your hand is full.'}</span>
@@ -496,7 +533,7 @@ export default function DeckScene() {
               </div>
             </div>
             <div className="reveal__card">
-              <SuitSwash color={elements[current.element].pageColorHex} swashRef={swashRef} />
+              <SuitSwash color={elements[current.element].pageColorHex} swashRef={swashRef} pebble />
               <div
                 className="card flip"
                 ref={flipRef}
@@ -569,11 +606,13 @@ export default function DeckScene() {
             </div>
             <div className="actions" style={{ visibility: reading.length === 3 ? 'visible' : 'hidden' }}>
               {/* As with one card: shuffling back is the everyday move, keeping is the deliberate one. */}
-              <button type="button" className="pill" onClick={startOver}>
+              <button type="button" className="tab" onClick={startOver}>
+                <DeckIcon />
                 Shuffle them back
               </button>
               {room > 0 ? (
-                <button type="button" className="textlink" onClick={keepReading}>
+                <button type="button" className="tab" onClick={keepReading}>
+                  <HandIcon />
                   {room >= 3 ? 'Keep all three in my hand' : `Keep the first ${NUMBER_WORDS[room].toLowerCase()} in my hand`}
                 </button>
               ) : (
@@ -600,7 +639,6 @@ export default function DeckScene() {
                     key={card.id}
                     type="button"
                     className="card card--mini mini"
-                    style={{ '--tilt': `${[-2, 1.5, -1, 2, -1.5, 1][i]}deg` } as React.CSSProperties}
                     onClick={() => openKept(i)}
                     aria-label={`Read ${card.word} again`}
                   >
@@ -615,11 +653,12 @@ export default function DeckScene() {
             </div>
             {hand.length > 0 && <p className="eyebrow">Tap a card to read it again</p>}
             <div className="actions">
-              <button type="button" className="pill" onClick={goToDeck}>
+              <button type="button" className="tab" onClick={goToDeck}>
+                <DeckIcon />
                 {hand.length === 0 ? 'Draw a card' : 'Draw another'}
               </button>
               {hand.length > 0 && (
-                <button type="button" className="textlink" onClick={() => setHand([])}>
+                <button type="button" className="tab" onClick={() => setHand([])}>
                   Let them all go
                 </button>
               )}
@@ -648,8 +687,12 @@ export default function DeckScene() {
                 </div>
               </div>
               <div className="actions">
-                <button type="button" className="textlink" onClick={letGo}>
+                <button type="button" className="tab wide-only" onClick={letGo}>
                   Let it go
+                </button>
+                <button type="button" className="tab phone-only" onClick={() => setView('hand')}>
+                  <HandIcon />
+                  Back to your hand
                 </button>
               </div>
             </div>

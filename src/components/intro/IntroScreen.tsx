@@ -39,6 +39,10 @@ export default function IntroScreen({ onComplete }: IntroScreenProps) {
     const root = rootRef.current;
     if (!root) return;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // On a phone the sun is small, so the breath needs to be bigger to read as one.
+    const phone = window.matchMedia('(max-width: 760px)').matches;
+    const ringGrow = phone ? 1.38 : 1.17;
+    const rayPush = phone ? 2.4 : 1;
 
     const ctx = gsap.context(() => {
       const phrases = gsap.utils.toArray<HTMLElement>('.intro__line span');
@@ -62,9 +66,9 @@ export default function IntroScreen({ onComplete }: IntroScreenProps) {
         if (i > 0) say(tl, BREATHE_IN, t0 - 0.4);
         // The disc and face hold still; the ring widens and the rays stretch out in turn.
         if (!reduce) {
-          tl.to('.intro__ring', { scale: 1.17, opacity: 0.6, duration: IN, ease: 'sine.inOut' }, t0).to(
+          tl.to('.intro__ring', { scale: ringGrow, opacity: 0.6, duration: IN, ease: 'sine.inOut' }, t0).to(
             rays,
-            { x: i2 => RAYS[i2].dx, y: i2 => RAYS[i2].dy, duration: IN * 0.7, ease: 'sine.inOut', stagger: { each: 0.07, from: 0 } },
+            { x: i2 => RAYS[i2].dx * rayPush, y: i2 => RAYS[i2].dy * rayPush, duration: IN * 0.7, ease: 'sine.inOut', stagger: { each: 0.07, from: 0 } },
             t0
           );
         }
