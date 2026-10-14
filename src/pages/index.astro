@@ -1,8 +1,37 @@
 ---
 import Layout from '../components/layout/Layout.astro';
 import DeckScene from '../components/deck/DeckScene.tsx';
+import { cards } from '../data/cards';
+import { elements, elementOrder } from '../data/elements';
 ---
 
-<Layout title="Creative's Sanctuary - Oracle Card Deck">
+<Layout title="Creative’s Sanctuary · An oracle deck for people who make things">
   <DeckScene client:load />
+
+  {/* The deck is drawn by JavaScript, so this says in plain words what the page is, for
+      search engines, AI tools, link previews and screen readers. It isn't shown on screen. */}
+  <section class="sr-only" aria-label="About the deck">
+    <h2>About Creative’s Sanctuary</h2>
+    <p>
+      Creative’s Sanctuary is a free online oracle deck for designers, illustrators, writers and anyone who makes
+      things. Each of its 52 hand-drawn cards gives a piece of advice the way a cheeky friend would: half joke, half
+      real. Draw a single card for the day, or a three-card reading: the mess, the nudge and the next bit.
+    </p>
+    <p>
+      The cards come in four suits of thirteen: {elementOrder.map(id => elements[id].name).join(', ')}. Made by
+      <a href="https://izgiuygur.com" tabindex="-1">Izgi Uygur Studio</a>.
+    </p>
+    <p><a href="/cards" tabindex="-1">See all 52 cards</a></p>
+    {elementOrder.map(id => (
+      <>
+        <h3>{elements[id].name}</h3>
+        <ul>
+          {cards
+            .filter(c => c.element === id)
+            .sort((a, b) => a.order - b.order)
+            .map(c => <li>{c.word}: {c.quote}</li>)}
+        </ul>
+      </>
+    ))}
+  </section>
 </Layout>

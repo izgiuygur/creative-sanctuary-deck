@@ -3,6 +3,6 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 
 export default defineConfig({
-  site: 'https://creativesanctuarydeck.com',
+  site: 'https://www.creativesanctuarydeck.com',
   integrations: [react()],
 });
