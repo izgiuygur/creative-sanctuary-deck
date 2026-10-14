@@ -75,6 +75,9 @@ select {
 
 .sr-only {
   position: absolute;
+  /* Pinned to the corner so it never adds a pixel of scroll at the bottom of the page. */
+  top: 0;
+  left: 0;
   width: 1px;
   height: 1px;
   overflow: hidden;
@@ -689,6 +692,11 @@ html[data-theme='dark'] .reveal__card .flip {
   width: 100%;
 }
 
+/* A little air between the quotes and the buttons. */
+.reading .actions {
+  margin-top: 16px;
+}
+
 .reading__prompt {
   margin: 0;
   min-height: 1.2em;
@@ -699,11 +707,13 @@ html[data-theme='dark'] .reveal__card .flip {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: clamp(28px, 6vw, 90px);
+  /* Wide gaps, so each quote can spread wider than its card without meeting its neighbour. */
+  gap: clamp(48px, 14vw, 210px);
 }
 
 .slot {
-  --card-w: min(280px, 22vw, calc((100dvh - 500px) * var(--card-ratio)));
+  /* Sized from what's left of the screen after the header, prompt, quotes, buttons and hand line. */
+  --card-w: min(260px, 20vw, calc((100dvh - 536px) * var(--card-ratio)));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -723,12 +733,13 @@ html[data-theme='dark'] .reveal__card .flip {
 }
 
 .slot__quote {
-  margin: 10px 0 0;
-  width: calc(var(--card-w) + 60px);
-  min-height: 5.4em;
+  margin: 6px 0 0;
+  width: calc(var(--card-w) + 130px);
+  /* Room for the longest quote (four lines), so the page never grows when it lands. */
+  min-height: 5.3em;
   text-align: center;
   color: var(--ink);
-  font: 400 clamp(15px, 1.4vw, 20px) / 1.35 var(--font-voice);
+  font: 400 clamp(14px, 1.15vw, 16.5px) / 1.32 var(--font-voice);
 }
 
 /* === Your hand === */
