@@ -622,9 +622,13 @@ select {
   z-index: 1;
 }
 
-/* Tapping the open card puts it back on the deck. */
+/* Tapping the open card puts it back on the deck, so it gets the same wand as the deck. */
 .reveal__card .flip {
-  cursor: pointer;
+  cursor: url('/cursor-wand.svg') 9 9, pointer;
+}
+
+html[data-theme='dark'] .reveal__card .flip {
+  cursor: url('/cursor-wand-dark.svg') 9 9, pointer;
 }
 
 .reveal {
