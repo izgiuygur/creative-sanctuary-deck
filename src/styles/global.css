@@ -793,6 +793,12 @@ select {
   gap: 24px;
 }
 
+/* In front of the suit's colour shape, which reaches down behind it. */
+.kept__center .actions {
+  position: relative;
+  z-index: 2;
+}
+
 .kept__nav {
   display: inline-flex;
   align-items: center;
