@@ -568,16 +568,17 @@ export default function DeckScene() {
               })}
             </div>
             <div className="actions" style={{ visibility: reading.length === 3 ? 'visible' : 'hidden' }}>
+              {/* As with one card: shuffling back is the everyday move, keeping is the deliberate one. */}
+              <button type="button" className="pill" onClick={startOver}>
+                Shuffle them back
+              </button>
               {room > 0 ? (
-                <button type="button" className="pill" onClick={keepReading}>
-                  {room >= 3 ? 'Keep all three' : `Keep the first ${NUMBER_WORDS[room].toLowerCase()}`}
+                <button type="button" className="textlink" onClick={keepReading}>
+                  {room >= 3 ? 'Keep all three in my hand' : `Keep the first ${NUMBER_WORDS[room].toLowerCase()} in my hand`}
                 </button>
               ) : (
                 <span className="aside">Your hand is full.</span>
               )}
-              <button type="button" className="textlink" onClick={startOver}>
-                Start over
-              </button>
             </div>
           </div>
         )}
