@@ -32,6 +32,11 @@ import { elements, elementOrder } from '../data/elements';
   </main>
 </Layout>
 
+<script>
+  import { startAnalytics } from '../lib/analytics';
+  startAnalytics();
+</script>
+
 <style>
   /* The resting page locks scrolling; this one needs to scroll. */
   :global(html),

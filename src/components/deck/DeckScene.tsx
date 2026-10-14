@@ -5,6 +5,7 @@ import { elements, elementOrder } from '../../data/elements';
 import { getRandomCard } from '../../data/cards';
 import { CardFront, CardBack, Deck } from './Card';
 import Doodles from './Doodles';
+import { startAnalytics, track } from '../../lib/analytics';
 import IntroScreen from '../intro/IntroScreen';
 
 type View = 'boot' | 'intro' | 'deck' | 'hand' | 'kept';
@@ -70,6 +71,7 @@ export default function DeckScene() {
   // Layout.astro sets the theme before first paint; pick it up here so the moon knows.
   useEffect(() => {
     setDark(document.documentElement.dataset.theme === 'dark');
+    startAnalytics();
   }, []);
 
   const toggleLights = useCallback(() => {
@@ -81,11 +83,13 @@ export default function DeckScene() {
       } catch {
         /* ignore */
       }
+      track('dark_mode', { on: next });
       return next;
     });
   }, []);
 
-  const finishIntro = useCallback(() => {
+  const finishIntro = useCallback((skipped?: boolean) => {
+    track(skipped ? 'breathing_skipped' : 'breathing_finished');
     try {
       window.localStorage.setItem(BREATHED_KEY, '1');
     } catch {
@@ -129,6 +133,7 @@ export default function DeckScene() {
       }
       originRef.current = { x: r.left + r.width / 2, y, restY, width: deck.offsetWidth };
     }
+    track('card_drawn', { card: card.word, suit: card.element, mode: 'single' });
     const extras = restingRef.current?.querySelectorAll('.doodles, .prompt, .swash');
     if (prefersReducedMotion() || !extras?.length) {
       setCurrent(card);
@@ -213,6 +218,7 @@ export default function DeckScene() {
   const putBack = useCallback(() => {
     if (busy || !current) return;
     setBusy(true);
+    track('card_put_back', { card: current.word, suit: current.element });
     leaveCard(() => {
       setCurrent(null);
       setBusy(false);
@@ -230,6 +236,7 @@ export default function DeckScene() {
     if (busy || !current || hand.length >= HAND_LIMIT) return;
     setBusy(true);
     const card = current;
+    track('card_kept', { card: card.word, suit: card.element, hand_size: hand.length + 1 });
     leaveCard(() => {
       setHand(h => (h.some(c => c.id === card.id) ? h : [...h, card]));
       setCurrent(null);
@@ -244,6 +251,8 @@ export default function DeckScene() {
     const card = pickCard();
     if (!card) return;
     setBusy(true);
+    track('card_drawn', { card: card.word, suit: card.element, mode: 'triple', position: reading.length + 1 });
+    if (reading.length === 2) track('reading_completed');
     setReading(r => [...r, card]);
   }, [busy, reading.length, pickCard]);
 
@@ -280,12 +289,14 @@ export default function DeckScene() {
 
   const startOver = useCallback(() => {
     if (busy) return;
+    track('reading_started_over');
     setReading([]);
   }, [busy]);
 
   const room = HAND_LIMIT - hand.length;
   const keepReading = useCallback(() => {
     if (busy || room <= 0) return;
+    track('reading_kept', { count: Math.min(room, reading.length) });
     setHand(h => {
       const fresh = reading.filter(c => !h.some(x => x.id === c.id)).slice(0, HAND_LIMIT - h.length);
       return [...h, ...fresh];
@@ -298,12 +309,18 @@ export default function DeckScene() {
   const changeMode = useCallback(
     (next: DrawMode) => {
       if (busy || next === mode) return;
+      track('mode_changed', { mode: next });
       setCurrent(null);
       setReading([]);
       setMode(next);
     },
     [busy, mode]
   );
+
+  const chooseFilter = (next: ElementFilter) => {
+    if (next !== filter) track('suit_filter', { suit: next });
+    setFilter(next);
+  };
 
   const goToDeck = useCallback(() => {
     if (busy) return;
@@ -316,6 +333,8 @@ export default function DeckScene() {
   };
 
   const letGo = useCallback(() => {
+    const gone = hand[keptIndex];
+    if (gone) track('card_let_go', { card: gone.word, suit: gone.element });
     const next = hand.filter((_, i) => i !== keptIndex);
     setHand(next);
     if (next.length === 0) setView('hand');
@@ -399,7 +418,7 @@ export default function DeckScene() {
         {view === 'deck' && (
           <>
             <div className="suits__list">
-              <button type="button" className="navlink" aria-pressed={filter === 'all'} onClick={() => setFilter('all')}>
+              <button type="button" className="navlink" aria-pressed={filter === 'all'} onClick={() => chooseFilter('all')}>
                 All suits
               </button>
               {elementOrder.map(id => (
@@ -409,7 +428,7 @@ export default function DeckScene() {
                   className="navlink"
                   aria-pressed={filter === id}
                   data-element={id}
-                  onClick={() => setFilter(id)}
+                  onClick={() => chooseFilter(id)}
                 >
                   {elements[id].name}
                 </button>
@@ -417,7 +436,7 @@ export default function DeckScene() {
             </div>
             <label className="suits__select">
               <span className="sr-only">Suit</span>
-              <select value={filter} onChange={e => setFilter(e.target.value as ElementFilter)}>
+              <select value={filter} onChange={e => chooseFilter(e.target.value as ElementFilter)}>
                 <option value="all">All suits</option>
                 {elementOrder.map(id => (
                   <option key={id} value={id}>
@@ -435,7 +454,12 @@ export default function DeckScene() {
         {/* Resting: the deck waits, with the doodles around it */}
         {resting && (
           <div className="resting" ref={restingRef}>
-            <Doodles onBreathe={() => !busy && setView('intro')} dark={dark} onLights={toggleLights} />
+            <Doodles
+              onBreathe={() => {
+                if (busy) return;
+                track('breathing_opened');
+                setView('intro');
+              }} dark={dark} onLights={toggleLights} />
             <div className="deck-wrap">
               <p className="prompt">
                 Go on, pick one.
@@ -642,7 +666,11 @@ export default function DeckScene() {
       </main>
 
       {view === 'deck' && (
-        <button type="button" className="handbtn" ref={handBtnRef} onClick={() => !busy && setView('hand')} key={hand.length}>
+        <button type="button" className="handbtn" ref={handBtnRef} onClick={() => {
+            if (busy) return;
+            track('hand_opened', { hand_size: hand.length });
+            setView('hand');
+          }} key={hand.length}>
           {/* Little versions of the kept cards, so "Keep it" has somewhere visible to go. */}
           <span className="handbtn__cards" aria-hidden="true">
             {hand.length === 0 ? (
@@ -663,7 +691,7 @@ export default function DeckScene() {
         </button>
       )}
 
-      <a className="credit" href="https://izgiuygur.com" target="_blank" rel="noopener">
+      <a className="credit" href="https://izgiuygur.com" target="_blank" rel="noopener" onClick={() => track('studio_link')}>
         by Izgi Uygur Studio
       </a>
     </div>

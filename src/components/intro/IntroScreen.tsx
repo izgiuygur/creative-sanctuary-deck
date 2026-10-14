@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 interface IntroScreenProps {
-  onComplete: () => void;
+  /** Called when the breathing ends; `skipped` is true when the visitor skipped it. */
+  onComplete: (skipped?: boolean) => void;
 }
 
 const IN = 4;
@@ -129,7 +130,7 @@ export default function IntroScreen({ onComplete }: IntroScreenProps) {
       <button type="button" className="intro__skip textlink" onClick={() => {
           // Straight to the deck: no closing lines.
           tlRef.current?.kill();
-          doneRef.current();
+          doneRef.current(true);
         }}>
         Skip the breathing
       </button>
