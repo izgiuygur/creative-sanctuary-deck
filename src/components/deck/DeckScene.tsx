@@ -481,17 +481,18 @@ export default function DeckScene() {
           <div className="reveal" key={current.id}>
             <div className="reveal__text" ref={revealTextRef} data-element={current.element}>
               <p className="reveal__quote">{current.quote}</p>
+              {/* Putting it back is the everyday move; keeping a card is the deliberate one. */}
               <div className="actions">
+                <button type="button" className="pill" onClick={putBack}>
+                  Put it back
+                </button>
                 {hand.length < HAND_LIMIT && !alreadyKept ? (
-                  <button type="button" className="pill" onClick={keepCurrent}>
-                    Keep it
+                  <button type="button" className="textlink" onClick={keepCurrent}>
+                    Keep it in my hand
                   </button>
                 ) : (
                   <span className="aside">{alreadyKept ? 'Already in your hand.' : 'Your hand is full.'}</span>
                 )}
-                <button type="button" className="textlink" onClick={putBack}>
-                  Put it back
-                </button>
               </div>
             </div>
             <div className="reveal__card">
