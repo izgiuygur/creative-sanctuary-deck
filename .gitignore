@@ -22,3 +22,12 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Claude Code local config
+.claude/
+
+# Source images for the card art (the site uses the exported WebPs in public/art)
+art-v2/raw/
+
+# Design experiments, not part of the site
+prototypes/

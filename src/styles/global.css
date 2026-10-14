@@ -1,796 +1,1112 @@
-/* === Design Tokens === */
 :root {
-  --color-earth: #1a407d;
-  --color-fire: #ec1f51;
-  --color-water: #1a407d;
-  --color-air: #1a407d;
-
-  --color-card-bg: #EDE0E8;
-  --color-page-bg: #1c1f2e;
-
-  --font-display: 'Playfair Display', 'Georgia', serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-card-title: 'Hanken Grotesk', 'Inter', system-ui, sans-serif;
-  --font-card-quote: 'Source Serif 4', 'Georgia', serif;
-  --font-card-label: 'Hanken Grotesk', 'Inter', system-ui, sans-serif;
-
-  --card-width: min(280px, 70vw);
-  --card-height: calc(var(--card-width) * 1.5);
-  --card-radius: 16px;
-  --card-padding: 18px 18px 28px 14px;
-  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --paper: #f7f3ea;
+  --ink: #1a407d;
+  --sun: #f6ec5e;
+  --deck: #1a407d;
+  --deck-deep: #12305f;
+  --fire: #ec1f51;
+  /* Ink that sits on the yellow, whatever the page is doing. */
+  --on-sun: #1a407d;
+  --font-ui: 'Hanken Grotesk', system-ui, sans-serif;
+  --font-voice: 'Fraunces', Georgia, serif;
+  --font-quote: 'Source Serif 4', Georgia, serif;
+  /* Card proportion: 7 wide to 12 tall. */
+  --card-ratio: 0.5833;
 }
 
-/* === Custom Cursors === */
-*, *::before, *::after {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Cpath d='M2 16 Q8 6 16 6 Q24 6 30 16 Q24 26 16 26 Q8 26 2 16Z' stroke='%23a3e635' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='16' r='5' stroke='%23a3e635' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%23a3e635'/%3E%3C/svg%3E") 16 16, auto;
+:root[data-theme='dark'] {
+  --paper: #0e1b3a;
+  --ink: #f7f3ea;
+  --deck: #234c92;
+  --deck-deep: #17376e;
+  --fire: #ff7a9a;
+  color-scheme: dark;
 }
 
-a, button, [role="button"], [tabindex="0"],
-label, select, summary, [type="button"],
-[type="submit"], [type="reset"], [data-clickable] {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Cpath d='M2 16 Q8 4 16 4 Q24 4 30 16 Q24 28 16 28 Q8 28 2 16Z' stroke='%23a3e635' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='16' r='6' stroke='%23a3e635' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23a3e635'/%3E%3C/svg%3E") 16 16, pointer !important;
-}
-
-/* === Reset === */
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  overflow: hidden;
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+/* A small sparkle in place of the arrow. Buttons and links keep the ordinary pointing hand. */
+html {
+  cursor: url('/cursor-sparkle.svg') 16 16, auto;
+}
+
+html[data-theme='dark'] {
+  cursor: url('/cursor-sparkle-dark.svg') 16 16, auto;
+}
+
+html[data-theme='dark'] .deck {
+  cursor: url('/cursor-wand-dark.svg') 9 9, pointer;
 }
 
 body {
-  font-family: var(--font-body);
-  background: var(--color-page-bg);
-  color: #e0e0e8;
+  background-color: var(--paper);
+  color: var(--ink);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  font-family: var(--font-ui);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-main {
-  height: 100%;
+button,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
 }
 
-/* === Intro Screen === */
-.intro-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  background: var(--color-page-bg);
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* === Shared type and controls === */
+
+.eyebrow {
+  margin: 0;
+  font: 500 13px/18px var(--font-ui);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.navlink {
+  font: 500 15px/20px var(--font-ui);
+  text-underline-offset: 5px;
+}
+
+.navlink:hover,
+.navlink[aria-pressed='true'],
+.navlink--back {
+  text-decoration: underline;
+}
+
+.pill {
+  padding: 12px 26px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font: 500 16px/22px var(--font-ui);
+  transition: transform 0.2s ease;
+}
+
+.pill:hover {
+  transform: translateY(-2px);
+}
+
+.textlink {
+  font: 500 16px/22px var(--font-ui);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.aside {
+  font: italic 400 18px/24px var(--font-voice);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px 26px;
+}
+
+/* === Page frame: controls in the corners, the name at the top === */
+
+.app {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    'modes word suits'
+    'stage stage stage'
+    'hand hand hand';
+  column-gap: 24px;
+  padding: 40px 44px;
+  animation: fade-in 0.7s ease both;
+}
+
+/* Fixed height, so the long suit list overlaps the stage's corner instead of pushing it down. */
+.corner {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
+  gap: 6px;
+  height: 36px;
 }
 
-.intro-screen__title {
-  font-family: var(--font-display);
-  font-size: 3rem;
-  font-weight: 700;
-  color: #f0f0f5;
+.modes {
+  grid-area: modes;
+  align-items: flex-start;
+}
+
+.suits {
+  grid-area: suits;
+  align-items: flex-end;
+}
+
+.suits__list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.suits__select {
+  display: none;
+}
+
+.masthead {
+  grid-area: word;
   text-align: center;
-  line-height: 1.1;
-  opacity: 0;
 }
 
-.intro-screen__orb-wrapper {
+.wordmark {
+  margin: 0;
+  font: italic 600 32px/1.1 var(--font-voice);
+  letter-spacing: -0.02em;
+}
+
+.app[data-big] .wordmark {
+  font-size: clamp(38px, 4.7vw, 68px);
+}
+
+.tagline {
+  margin-top: 10px;
+}
+
+.stage {
+  grid-area: stage;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 0;
+  padding: 20px 0;
 }
 
-.intro-screen__glow {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(220, 200, 240, 0.35) 0%,
-    rgba(200, 215, 250, 0.2) 30%,
-    rgba(220, 190, 240, 0.1) 55%,
-    transparent 75%
-  );
-  pointer-events: none;
+.handbtn {
+  grid-area: hand;
+  justify-self: start;
+  align-self: end;
+  text-align: left;
+  font: italic 400 19px/24px var(--font-voice);
+  animation: nudge 0.5s ease both;
 }
 
-.intro-screen__orb {
-  position: relative;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background:
-    radial-gradient(
-      circle at 35% 30%,
-      rgba(255, 255, 255, 0.5),
-      rgba(240, 230, 250, 0.25) 25%,
-      rgba(220, 200, 240, 0.15) 45%,
-      rgba(190, 210, 240, 0.1) 65%,
-      rgba(230, 200, 220, 0.05) 85%,
-      transparent 100%
-    ),
-    radial-gradient(
-      circle at 65% 65%,
-      rgba(210, 180, 240, 0.12),
-      rgba(180, 210, 240, 0.08) 40%,
-      transparent 70%
-    );
-  border: 1px solid rgba(255, 255, 255, 0.12);
+.handbtn:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
-.intro-screen__breath-text {
-  font-family: var(--font-body);
-  font-size: 1.1rem;
-  font-weight: 300;
-  color: #8a8e9e;
-  text-align: center;
-  min-height: 1.5em;
-  letter-spacing: 0.05em;
-}
-
-.intro-screen__cta {
-  background: none;
-  border: 1px solid rgba(200, 190, 230, 0.4);
-  border-radius: 32px;
-  padding: 0.8rem 2rem;
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 400;
-  color: rgba(200, 210, 255, 0.9);
-  letter-spacing: 0.03em;
-  transition: all 0.3s ease;
-  opacity: 0;
-}
-
-.intro-screen__cta:hover {
-  border-color: rgba(220, 200, 240, 0.7);
-  background: rgba(220, 200, 240, 0.1);
-  box-shadow: 0 0 20px 5px rgba(220, 200, 240, 0.2);
-  color: #e0e0e8;
-}
-
-.intro-screen__skip {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
-  background: none;
-  border: none;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  color: #6b7086;
-  opacity: 0.5;
+.credit {
+  grid-area: hand;
+  justify-self: end;
+  align-self: end;
+  font: 500 13px/20px var(--font-ui);
+  letter-spacing: 0.02em;
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.75;
   transition: opacity 0.2s ease;
 }
 
-.intro-screen__skip:hover {
-  opacity: 0.8;
-}
-
-/* === Three-Panel Layout === */
-.app-layout {
-  display: grid;
-  grid-template-columns: 220px 1fr 240px;
-  height: 100vh;
-  height: 100dvh;
-  overflow: hidden;
-}
-
-/* === LEFT SIDEBAR === */
-.sidebar--left {
-  display: flex;
-  flex-direction: column;
-  padding: 2.5rem 2rem;
-  gap: 2.5rem;
-}
-
-.sidebar__header {
-  margin-bottom: 0.5rem;
-}
-
-.sidebar__title {
-  font-family: var(--font-display);
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #f0f0f5;
-  line-height: 1.1;
-}
-
-.sidebar__subtitle {
-  font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 400;
-  color: #8a8a9a;
-  line-height: 1.5;
-  margin-top: 1.1rem;
-  padding-left: 0.15rem;
-}
-
-.sidebar__nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.sidebar__section {
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar__link {
-  background: none;
-  border: none;
-  text-align: left;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: #8a8e9e;
-  cursor: pointer;
-  padding: 0.5rem 0;
-  transition: color 0.2s ease, opacity 0.2s ease;
-  opacity: 0.5;
-}
-
-.sidebar__link:hover {
-  opacity: 0.8;
-}
-
-.sidebar__link--active {
+.credit:hover,
+.credit:focus-visible {
   opacity: 1;
-  color: #e0e0e8;
-  font-weight: 400;
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 
-.sidebar__link--element[data-element="earth"]:hover { color: #a0b8d8; }
-.sidebar__link--element[data-element="fire"]:hover  { color: #f47a95; }
-.sidebar__link--element[data-element="water"]:hover { color: #7ec4d6; }
-.sidebar__link--element[data-element="air"]:hover   { color: #8cd4a8; }
+/* === The card === */
 
-.sidebar__divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
+.card {
+  position: relative;
+  flex-shrink: 0;
+  display: block;
+  width: var(--card-w);
+  aspect-ratio: 7 / 12;
+  /* 1em is 16px when the card is 420px wide, so everything on it scales together. */
+  font-size: calc(var(--card-w) / 26.25);
+  border-radius: 1em;
 }
 
-.sidebar__divider--wide {
-  margin: 2rem 0;
-  background: rgba(255, 255, 255, 0.12);
-}
-
-/* === CENTER: DECK === */
-.deck-center {
+.card-front {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
+  padding: 1.9em 2em 2.25em 2.25em;
+  border-radius: inherit;
+  background: var(--card-bg);
+  color: var(--card-ink);
+  box-shadow: 0 1.25em 2.75em rgba(26, 64, 125, 0.2);
+  text-align: left;
+}
+
+.card-front__title {
+  margin: 0;
+  font: 500 2.375em/1.1 var(--font-ui);
+  letter-spacing: -0.01em;
+}
+
+.card-front__art {
+  flex: 1;
+  min-height: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-  position: relative;
+  padding: 0.5em 0 0.5em 1em;
 }
 
-.deck-center__prompt {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: #8a8e9e;
-  text-align: center;
-  min-height: 1.4em;
+.card-front__art svg,
+.card-front__art img {
+  width: 100%;
+  height: 100%;
 }
 
-.deck-center__return-link {
-  background: none;
-  border: none;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: #8a8e9e;
-  cursor: pointer;
-  padding: 0;
-  transition: color 0.2s ease;
+.card-front__art img {
+  display: block;
+  object-fit: contain;
 }
 
-.deck-center__return-link:hover {
-  color: #e0e0e8;
+.card-front__quote {
+  margin: 0;
+  align-self: flex-end;
+  width: 12em;
+  font: 400 1.25em/1.3 var(--font-quote);
 }
 
-.deck-center__actions {
+.card-front__spine {
+  position: absolute;
+  left: 0.75em;
+  bottom: 1.9em;
+  writing-mode: vertical-rl;
+  /* Without this, the apostrophe stands upright and drifts away from its word. */
+  text-orientation: sideways;
+  transform: rotate(180deg);
+  font: 500 1.19em/1.2 var(--font-ui);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.card-front__spine span {
+  opacity: 0.4;
+}
+
+.card-front--image .card-front__art {
+  padding-bottom: 2em;
+}
+
+.card--mini .card-front {
+  padding: 1.5em 1.7em 1.7em;
+  box-shadow: 0 0.9em 2em rgba(26, 64, 125, 0.16);
+}
+
+.card--mini .card-front__spine {
+  display: none;
+}
+
+.card--mini .card-front__art {
+  padding: 0.5em 0 1.5em;
+}
+
+.card-back {
+  position: absolute;
+  inset: 0;
   display: flex;
-  gap: 0.75rem;
-  min-height: 44px;
-  align-items: center;
+  padding: 1.25em;
+  border-radius: inherit;
+  background: var(--deck);
 }
 
-/* === Action Buttons === */
-.action-btn {
-  padding: 0.6rem 1.4rem;
-  border: none;
-  border-radius: 24px;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.action-btn--primary {
-  background: var(--color-earth);
-  color: white;
-}
-
-.action-btn--primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-}
-
-.action-btn--secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: #b0b4c4;
-}
-
-.action-btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-/* === Deck Draw Area === */
-.deck-scene__draw-area {
-  position: relative;
-  width: var(--card-width);
-  height: var(--card-height);
-  perspective: 1000px;
-}
-
-.deck-scene__card-container.card {
-  position: absolute;
-  top: 0;
-  left: 0;
+.card-back svg {
   width: 100%;
   height: 100%;
-  z-index: 10;
 }
 
-/* === Card Hover Add Button === */
-.card-hover-add {
+/* A card that can turn over. No overflow:hidden anywhere on it, or the 3D turn flattens. */
+.flip {
+  perspective: 1600px;
+}
+
+.flip__inner {
   position: absolute;
-  bottom: 12px;
-  right: 12px;
-  z-index: 20;
-  background: rgba(0, 0, 0, 0.55);
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  padding: 0.35rem 0.9rem;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 500;
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
-  pointer-events: none;
-}
-
-.deck-scene__card-container:hover .card-hover-add {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.card-hover-add:hover {
-  background: rgba(0, 0, 0, 0.75);
-}
-
-/* === Deck Stack === */
-.deck-stack {
-  position: relative;
-  width: var(--card-width);
-  height: var(--card-height);
-  cursor: pointer;
-}
-
-.deck-stack__card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--card-radius);
-  background: var(--color-card-bg);
-  box-shadow: var(--card-shadow);
-  transition: box-shadow 0.4s ease;
-}
-
-.deck-stack:hover .deck-stack__card:nth-child(1) {
-  box-shadow:
-    0 0 15px 5px rgba(70, 130, 255, 0.5),
-    0 0 40px 15px rgba(70, 130, 255, 0.35),
-    0 0 80px 30px rgba(70, 130, 255, 0.2),
-    0 0 130px 50px rgba(70, 130, 255, 0.1);
-}
-
-.deck-stack__card:nth-child(1) { transform: translate(0, 0) rotate(0deg); z-index: 4; }
-.deck-stack__card:nth-child(2) { transform: translate(3px, 3px) rotate(0.5deg); z-index: 3; }
-.deck-stack__card:nth-child(3) { transform: translate(6px, 6px) rotate(1deg); z-index: 2; }
-.deck-stack__card:nth-child(4) { transform: translate(9px, 9px) rotate(1.5deg); z-index: 1; }
-
-/* === Card === */
-.card {
-  width: var(--card-width);
-  height: var(--card-height);
-  border-radius: var(--card-radius);
-  background: transparent;
-  position: relative;
-}
-
-.card-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
+  inset: 0;
+  border-radius: inherit;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
 }
 
-.card-face {
-  width: 100%;
-  height: 100%;
+.flip__face {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+  border-radius: inherit;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: var(--card-radius);
-  background: var(--color-card-bg);
-  box-shadow: var(--card-shadow);
 }
 
-.card-face--front {
+.flip__face--front {
   transform: rotateY(180deg);
-  padding: var(--card-padding);
-  display: flex;
-  flex-direction: column;
-  background: var(--element-bg, var(--color-card-bg));
 }
 
-.card-face--back {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* === The face-down deck === */
+
+.deck {
+  position: relative;
+  z-index: 1;
+  display: block;
+  /* A wand over the deck, the one thing you cast on. Its hot spot is the sparkle at the tip. */
+  cursor: url('/cursor-wand.svg') 9 9, pointer;
+  transform: rotate(-4deg);
+  transition: transform 0.3s ease;
 }
 
-/* Card Face Content */
-.card__title {
-  font-family: var(--font-card-title);
-  font-size: 1.58rem;
-  font-weight: 500;
-  line-height: 1.1;
-  align-self: flex-start;
+.deck:hover {
+  transform: rotate(-2deg) translateY(-8px);
 }
 
-.card__illustration {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 -10px;
-  min-height: 0;
-}
-
-.card__illustration svg {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  max-height: none;
-}
-
-.card__quote {
-  font-family: var(--font-card-quote);
-  font-size: 0.75rem;
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.45;
-  text-align: left;
-  max-width: 60%;
-  align-self: flex-end;
-  margin-top: 0.5rem;
-}
-
-.card__element-label {
+.deck__under {
   position: absolute;
-  left: 8px;
-  bottom: 28px;
-  writing-mode: vertical-lr;
-  transform: rotate(180deg);
-  font-family: var(--font-card-label);
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  white-space: nowrap;
-}
-
-/* Element colors on card */
-.card[data-element="earth"] { --element-color: var(--color-earth); }
-.card[data-element="fire"]  { --element-color: var(--color-fire); }
-.card[data-element="water"] { --element-color: var(--color-water); }
-.card[data-element="air"]   { --element-color: var(--color-air); }
-
-.card__title,
-.card__element-label,
-.card__quote,
-.card__illustration {
-  color: var(--element-color);
-}
-
-/* === Card Back Design === */
-.card-back-design {
+  left: 3%;
+  top: 1.5%;
   width: 100%;
   height: 100%;
-  border-radius: var(--card-radius);
-  background: var(--color-card-bg);
+  border-radius: calc(var(--card-w) / 26.25);
+  background: var(--deck-deep);
+  transform: rotate(3deg);
+}
+
+.deck__top {
+  box-shadow: 0 1em 2.2em rgba(18, 48, 95, 0.22);
+}
+
+/* === Resting screen === */
+
+.resting {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  padding: 1.5rem;
 }
 
-.card-back-design__logo {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--color-earth);
-  text-align: center;
-  opacity: 0.7;
+/* The deck itself appears at once (a returning card lands exactly on it); only the dressing fades in. */
+.doodles,
+.prompt,
+.resting .swash {
+  animation: fade-in 0.6s ease both;
 }
 
-.card-back-design__ornament {
-  width: 50px;
-  height: 50px;
-  border: 2px solid var(--color-earth);
-  border-radius: 50%;
-  opacity: 0.3;
+.deck-wrap {
+  --card-w: min(320px, calc((100dvh - 350px) * var(--card-ratio)));
+  position: relative;
+  animation: bob 6s ease-in-out infinite;
+}
+
+.swash {
+  position: absolute;
+  left: 50%;
+  top: 53%;
+  width: 190%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.prompt {
+  position: absolute;
+  right: calc(100% + 64px);
+  top: 34%;
+  z-index: 2;
+  width: max-content;
+  max-width: 5.6em;
+  margin: 0;
+  transform: rotate(-5deg);
+  font: italic 500 clamp(34px, 3.9vw, 56px) / 1.04 var(--font-voice);
+  letter-spacing: -0.02em;
+}
+
+.prompt__arrow {
+  position: absolute;
+  left: 62%;
+  top: calc(100% + 6px);
+  width: 3em;
+  animation: wiggle 5s ease-in-out infinite;
+}
+
+.doodles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.doodle {
+  position: absolute;
+  animation: drift 6s ease-in-out infinite alternate;
+}
+
+.doodle--moon { left: 23%; top: 2%; width: 60px; --r: -18deg; }
+.doodle--spark-a { left: 28.5%; top: 17%; width: 54px; animation-duration: 4.4s; }
+.doodle--spark-b { left: 67%; top: 6%; width: 36px; animation-duration: 5.2s; --dy: 7px; }
+.doodle--spark-c { left: 8%; top: 22%; width: 34px; animation-duration: 5.6s; --r: 12deg; }
+.doodle--spark-d { left: 90%; top: 40%; width: 28px; animation-duration: 4.8s; --dy: 6px; }
+.doodle--spark-e { left: 62.5%; top: 94%; width: 44px; animation-duration: 6.4s; --r: -14deg; }
+.doodle--beads { left: 75%; top: -2%; width: 190px; animation-duration: 7s; --dy: 5px; }
+.doodle--star { left: 81%; top: 66%; width: 70px; animation-duration: 7.5s; --r: 6deg; }
+.doodle--zigzag { left: 69.5%; top: 84%; width: 124px; animation-duration: 6.6s; --r: -8deg; --dx: 8px; --dy: 0px; }
+.doodle--squiggle { left: 29%; top: 90%; width: 146px; --dx: 10px; --dy: 0px; }
+.doodle--eye { left: 85.5%; top: 93%; width: 92px; animation-duration: 8s; --r: 6deg; }
+.doodle--jellyfish { left: 71%; top: 16%; width: 144px; animation-duration: 9s; --r: 5deg; --dy: -12px; }
+.doodle--gate { left: 12.5%; top: 65%; width: 124px; animation-duration: 10s; --r: -8deg; --dy: -4px; }
+
+/* The eye is the one doodle you can press: it brings the breathing back. */
+.breathe {
+  pointer-events: auto;
+  display: block;
+}
+
+.breathe svg {
+  display: block;
+  width: 100%;
+  transform-origin: 50% 50%;
+  animation: blink 5.5s ease-in-out infinite;
+}
+
+.breathe__label {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) rotate(-4deg);
+  font: italic 500 22px/1 var(--font-voice);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.breathe:hover .breathe__label,
+.breathe:focus-visible .breathe__label {
+  opacity: 1;
+}
+
+.breathe:hover svg {
+  animation-duration: 1.4s;
+}
+
+/* No hover on touch screens, so the word stays visible. */
+@media (hover: none) {
+  .breathe__label {
+    opacity: 1;
+  }
+}
+
+/* The moon is the other one: it turns the lights off, and back on. */
+.lights {
+  pointer-events: auto;
+  display: block;
+}
+
+.lights svg {
+  display: block;
+  width: 100%;
+  transform-origin: 50% 50%;
+  transition: color 0.5s ease;
+  /* Like the eye's blink: every so often it rocks, to hint there is something behind it. */
+  animation: rock 6.5s ease-in-out infinite;
+}
+
+.lights:hover svg {
+  animation-duration: 1.6s;
+}
+
+:root[data-theme='dark'] .lights svg {
+  color: var(--sun);
+}
+
+.lights__label {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) rotate(-4deg);
+  font: italic 500 22px/1 var(--font-voice);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.lights:hover .lights__label,
+.lights:focus-visible .lights__label {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .lights__label {
+    opacity: 1;
+  }
+}
+
+/* === Revealed: one card, calm === */
+
+.reveal__card {
   position: relative;
 }
 
-.card-back-design__ornament::before,
-.card-back-design__ornament::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1.5px solid var(--color-earth);
-  border-radius: 50%;
-  opacity: 0.6;
+.reveal__card .card {
+  z-index: 1;
 }
 
-.card-back-design__ornament::before { width: 32px; height: 32px; }
-.card-back-design__ornament::after  { width: 16px; height: 16px; }
+/* Tapping the open card puts it back on the deck. */
+.reveal__card .flip {
+  cursor: pointer;
+}
 
-/* === RIGHT SIDEBAR: Saved Cards === */
-.sidebar--right {
+.reveal {
   display: flex;
-  flex-direction: column;
-  padding: 2rem 1.5rem;
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
-  overflow-y: auto;
-}
-
-.saved-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  height: 100%;
-}
-
-.saved-cards--empty {
+  align-items: center;
   justify-content: center;
-  align-items: center;
-}
-
-.saved-cards__hint {
-  font-size: 0.8rem;
-  color: #6b7086;
-  text-align: center;
-  font-style: italic;
-}
-
-.saved-cards__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-
-.saved-card {
-  background: var(--saved-bg, var(--color-card-bg));
-  border-radius: 10px;
-  padding: 0.6rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.3rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-}
-
-.saved-card__illustration {
+  gap: clamp(40px, 7vw, 110px);
   width: 100%;
-  aspect-ratio: 1;
+}
+
+.reveal .card,
+.kept .card {
+  --card-w: min(420px, calc((100dvh - 240px) * var(--card-ratio)));
+}
+
+.reveal__text {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--saved-color);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+  width: min(500px, 36vw);
 }
 
-.saved-card__illustration svg {
-  width: 80%;
-  height: 80%;
+/* Beside the card the words take the page's ink, except Fire, which keeps its red. */
+.reveal__eyebrow,
+.reveal__quote {
+  color: var(--ink);
 }
 
-.saved-card__word {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--saved-color);
-  text-align: center;
+[data-element='fire'] > .reveal__eyebrow,
+[data-element='fire'] > .reveal__quote,
+.slot__quote[data-element='fire'] {
+  color: var(--fire);
 }
 
-.saved-card__element {
-  font-size: 0.6rem;
-  color: #6b7086;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+/* Upright, not italic: it reads as someone talking to you, and leaves the italic to the wordmark. */
+.reveal__quote {
+  margin: 0;
+  font: 400 clamp(25px, 3vw, 43px) / 1.16 var(--font-voice);
+  letter-spacing: -0.02em;
 }
 
-.saved-cards__clear {
-  margin-top: auto;
-  background: none;
-  border: none;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: #6b7086;
-  cursor: pointer;
-  padding: 0.5rem;
-  text-align: center;
-  transition: color 0.2s;
-}
-
-.saved-cards__clear:hover {
-  color: #b0b4c4;
-}
-
-.saved-card {
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.saved-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-}
-
-/* === Card Detail Modal === */
-.card-modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  background: rgba(10, 12, 20, 0.6);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.card-modal__card {
-  cursor: default;
-  animation: modal-in 0.25s ease-out;
-}
-
-.card-modal__card .card-face--front {
-  transform: none;
-}
-
-@keyframes modal-in {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* === Responsive: collapse sidebars on small screens === */
-@media (max-width: 900px) {
-  .app-layout {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-    overflow-y: auto;
-  }
-
-  .sidebar--left {
-    flex-direction: row;
-    padding: 1rem 1.5rem;
-    gap: 1.5rem;
-    align-items: center;
-    flex-wrap: wrap;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .sidebar__title {
-    font-size: 1.1rem;
-  }
-
-  .sidebar__title br { display: none; }
-
-  .sidebar__subtitle {
+/* Wide screens: the quote sits beside the card, so the card shows title and image only. */
+@media (min-width: 1000px) {
+  .reveal .card-front__quote {
     display: none;
   }
-
-  .sidebar__nav {
-    flex-direction: row;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .sidebar__section {
-    flex-direction: row;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  .sidebar__link {
-    font-size: 0.85rem;
-    padding: 0.3rem 0.6rem;
-  }
-
-  .sidebar__divider {
-    width: 1px;
-    height: 16px;
-    min-width: 1px;
-  }
-
-  .sidebar__divider--wide {
-    margin: 0 0.25rem;
-    width: 1px;
-    height: 20px;
-  }
-
-  .sidebar--right {
-    border-left: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 1rem 1.5rem;
-  }
-
-  .saved-cards__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  :root {
-    --card-width: min(260px, 70vw);
+  .reveal .card-front__art {
+    padding-bottom: 2em;
   }
 }
 
-@media (min-width: 901px) and (max-width: 1200px) {
-  .app-layout {
-    grid-template-columns: 180px 1fr 200px;
-  }
+/* === Three-card reading === */
 
-  .sidebar--left {
-    padding: 2rem 1.5rem;
-  }
+.reading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+}
 
-  :root {
-    --card-width: 260px;
+.reading__prompt {
+  margin: 0;
+  min-height: 1.2em;
+  font: italic 500 clamp(22px, 2.2vw, 30px) / 1.2 var(--font-voice);
+}
+
+.reading__slots {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(28px, 6vw, 90px);
+}
+
+.slot {
+  --card-w: min(280px, 22vw, calc((100dvh - 500px) * var(--card-ratio)));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: var(--card-w);
+}
+
+.slot__card {
+  width: var(--card-w);
+}
+
+.slot__empty {
+  width: var(--card-w);
+  aspect-ratio: 7 / 12;
+  border: 1.5px dashed color-mix(in srgb, var(--ink) 45%, transparent);
+  border-radius: calc(var(--card-w) / 26.25);
+}
+
+.slot__quote {
+  margin: 10px 0 0;
+  width: calc(var(--card-w) + 60px);
+  min-height: 5.4em;
+  text-align: center;
+  color: var(--ink);
+  font: 400 clamp(15px, 1.4vw, 20px) / 1.35 var(--font-voice);
+}
+
+/* === Your hand === */
+
+.hand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  animation: fade-in 0.5s ease both;
+}
+
+.hand__title {
+  margin: 0;
+  font: italic 600 clamp(44px, 5vw, 72px) / 1.05 var(--font-voice);
+  letter-spacing: -0.02em;
+}
+
+.hand__sub {
+  margin: -16px 0 10px;
+  text-align: center;
+  font: italic 400 clamp(18px, 1.6vw, 22px) / 1.3 var(--font-voice);
+}
+
+.hand__row {
+  --card-w: min(190px, 13vw);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 30px);
+}
+
+.mini {
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.25s ease;
+}
+
+.mini:hover {
+  transform: rotate(0deg) translateY(-8px);
+}
+
+.hand__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: color-mix(in srgb, var(--ink) 75%, transparent);
+  font: italic 400 17px/22px var(--font-voice);
+}
+
+/* === A kept card, opened === */
+
+.kept {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  animation: fade-in 0.5s ease both;
+}
+
+.kept__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.kept__nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  justify-self: center;
+  font: italic 400 26px/32px var(--font-voice);
+}
+
+.kept__nav svg {
+  width: 38px;
+  flex-shrink: 0;
+}
+
+.kept__nav:hover {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+/* === Intro: the breathing sun === */
+
+.intro {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.intro__wordmark {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font: italic 600 clamp(22px, 2.3vw, 32px) / 1.1 var(--font-voice);
+  letter-spacing: -0.02em;
+}
+
+.intro__sun {
+  width: min(52vh, 78vw);
+  height: auto;
+  overflow: visible;
+}
+
+.intro__line {
+  position: relative;
+  width: 100%;
+  height: 1.15em;
+  margin-top: 2vh;
+  text-align: center;
+  font: italic 600 clamp(34px, 5vw, 72px) / 1.05 var(--font-voice);
+  letter-spacing: -0.02em;
+}
+
+/* Each phrase is its own layer and they cross-fade, so the words stay right when the timeline jumps. */
+.intro__line span {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 0;
+}
+
+.intro__sub {
+  margin-top: 16px;
+}
+
+.intro__skip {
+  position: absolute;
+  right: 44px;
+  bottom: 40px;
+  font-size: 15px;
+}
+
+/* === Motion === */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes nudge {
+  0% { transform: translateY(6px); opacity: 0.4; }
+  100% { transform: none; opacity: 1; }
+}
+
+@keyframes rock {
+  0%, 84%, 100% { transform: rotate(0deg) scale(1); }
+  88% { transform: rotate(-18deg) scale(1.1); }
+  92% { transform: rotate(10deg) scale(1.04); }
+  96% { transform: rotate(-5deg) scale(1); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes drift {
+  from { transform: translate(0, 0) rotate(var(--r, 0deg)); }
+  to { transform: translate(var(--dx, 0px), var(--dy, -8px)) rotate(calc(var(--r, 0deg) + 6deg)); }
+}
+
+@keyframes blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.08); }
+}
+
+@keyframes wiggle {
+  0%, 84%, 100% { transform: rotate(0deg); }
+  88% { transform: rotate(-7deg); }
+  94% { transform: rotate(5deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-wrap,
+  .doodle,
+  .breathe svg,
+  .lights svg,
+  .doodles,
+  .prompt,
+  .swash,
+  .prompt__arrow,
+  .app,
+  .hand,
+  .kept,
+  .handbtn {
+    animation: none;
   }
 }
 
-@media (min-width: 1201px) {
-  :root {
-    --card-width: 300px;
+/* === Narrow screens: the card carries its own quote, controls move to the bottom === */
+
+@media (max-width: 999px) {
+  .reveal {
+    flex-direction: column-reverse;
+    gap: 22px;
+  }
+  .reveal .card,
+  .kept .card {
+    --card-w: min(336px, 86vw, calc((100dvh - 300px) * var(--card-ratio)));
+  }
+  .reveal__text {
+    width: auto;
+    align-items: center;
+  }
+  .reveal__eyebrow,
+  .reveal__quote {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto auto auto;
+    grid-template-areas:
+      'word'
+      'suits'
+      'stage'
+      'modes'
+      'hand'
+      'credit';
+    row-gap: 14px;
+    padding: 26px 22px 24px;
+  }
+  .suits,
+  .modes {
+    align-items: center;
+    justify-self: center;
+    height: auto;
+  }
+  /* With a card open, the phone gives the card the room: no suit or mode switches. */
+  .app[data-revealed] .suits,
+  .app[data-revealed] .modes,
+  .app[data-revealed] .handbtn,
+  .app[data-revealed] .credit {
+    display: none;
+  }
+  .app[data-revealed] {
+    row-gap: 4px;
+  }
+  .app[data-view='hand'],
+  .app[data-view='kept'] {
+    grid-template-areas:
+      'word'
+      'modes'
+      'stage'
+      'hand'
+      'credit';
+    grid-template-rows: auto auto 1fr auto auto;
+  }
+  .wordmark {
+    font-size: 24px;
+  }
+  .app[data-big] .wordmark {
+    font-size: 34px;
+  }
+  .tagline {
+    font-size: 11px;
+    line-height: 14px;
+  }
+  .modes {
+    flex-direction: row;
+    gap: 16px;
+  }
+  .suits__list {
+    display: none;
+  }
+  .suits__select {
+    display: block;
+  }
+  .suits__select select {
+    font: 500 15px/20px var(--font-ui);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-align: center;
+  }
+  .handbtn {
+    justify-self: center;
+    text-align: center;
+    font-size: 17px;
+  }
+  /* No room beside the hand on a phone: the credit takes its own line underneath. */
+  .credit {
+    grid-area: credit;
+    justify-self: center;
+    margin-top: 4px;
+    font-size: 12px;
+  }
+
+  .resting {
+    flex-direction: column;
+  }
+  .deck-wrap {
+    --card-w: min(230px, 60vw, calc((100dvh - 430px) * var(--card-ratio)));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 34px;
+  }
+  .prompt {
+    position: relative;
+    right: auto;
+    top: auto;
+    max-width: none;
+    transform: rotate(-4deg);
+    font-size: 34px;
+  }
+  .prompt__arrow {
+    left: 0.6em;
+    right: auto;
+    top: calc(100% + 0.05em);
+    width: 1.35em;
+    transform: rotate(48deg);
+    animation: none;
+  }
+  .swash {
+    top: 62%;
+    width: 128%;
+  }
+  .doodle--wide {
+    display: none;
+  }
+  .doodle--squiggle,
+  .doodle--spark-a,
+  .doodle--jellyfish,
+  .doodle--gate {
+    display: none;
+  }
+  .doodle--moon { left: 1%; top: -1%; width: 26px; }
+  .doodle--eye { left: auto; right: 1%; top: 0; width: 42px; }
+  .doodle--spark-c { left: 93%; top: 58%; width: 14px; }
+  .doodle--star { left: 2%; top: 91%; width: 28px; }
+  /* The two that do something say so beside them, up out of the deck's way. */
+  .lights__label {
+    right: auto;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%) rotate(-4deg);
+    font-size: 15px;
+    opacity: 1;
+  }
+  .breathe__label {
+    right: calc(100% + 8px);
+    left: auto;
+    top: 50%;
+    transform: translateY(-50%) rotate(-4deg);
+    font-size: 15px;
+    opacity: 1;
+  }
+
+  /* An open card: as big as the screen allows, no coloured shape behind it, larger words. */
+  .reveal .swash--suit,
+  .kept .swash--suit {
+    display: none;
+  }
+  .reveal .card,
+  .kept .card {
+    --card-w: min(92vw, calc((100dvh - 225px) * var(--card-ratio)));
+  }
+  .reveal .card-front__title,
+  .kept .card-front__title {
+    font-size: 2.6em;
+  }
+  .reveal .card-front__quote,
+  .kept .card-front__quote {
+    width: auto;
+    max-width: 14em;
+    /* Clear of the sideways "Creative's Sanctuary" running up the left edge. */
+    margin-left: 1.3em;
+    font-size: 1.55em;
+    line-height: 1.28;
+  }
+
+  .reading__slots {
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+  }
+  .slot {
+    --card-w: min(220px, 58vw);
+  }
+  .slot__quote {
+    min-height: 0;
+    width: min(320px, 84vw);
+    font-size: 18px;
+  }
+
+  .hand__row {
+    --card-w: min(150px, 40vw);
+  }
+
+  .kept {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .kept__center {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  .kept__nav {
+    font-size: 20px;
+  }
+  .kept__nav--prev {
+    justify-self: start;
+  }
+  .kept__nav--next {
+    justify-self: end;
+  }
+
+  .intro__skip {
+    right: auto;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    white-space: nowrap;
   }
 }

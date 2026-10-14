@@ -14,11 +14,10 @@ export interface ElementMeta {
   name: string;
   colorHex: string;
   bgColorHex: string;
+  pageColorHex: string;
   description: string;
 }
 
 export type ElementFilter = Element | 'all';
 
 export type DrawMode = 'single' | 'triple';
-
-export type Phase = 'intro' | 'idle' | 'drawing' | 'revealed' | 'returning';

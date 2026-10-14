@@ -1,0 +1,85 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import { CardFront } from '../components/deck/Card.tsx';
+import { cards } from '../data/cards';
+import { elements, elementOrder } from '../data/elements';
+---
+
+<Layout title="All the cards · Creative's Sanctuary">
+  <main class="gallery">
+    <header class="gallery__head">
+      <a class="navlink navlink--back" href="/">Back to the deck</a>
+      <h1 class="gallery__title">All 52 cards</h1>
+    </header>
+    {elementOrder.map(id => (
+      <section class="gallery__suit">
+        <h2 class="eyebrow">{elements[id].name}</h2>
+        <div class="gallery__grid">
+          {cards
+            .filter(c => c.element === id)
+            .sort((a, b) => a.order - b.order)
+            .map(card => (
+              <div class="card gallery__card">
+                <CardFront card={card} />
+              </div>
+            ))}
+        </div>
+      </section>
+    ))}
+  </main>
+</Layout>
+
+<style>
+  /* The resting page locks scrolling; this one needs to scroll. */
+  :global(html),
+  :global(body) {
+    overflow: auto;
+    height: auto;
+  }
+
+  .gallery {
+    padding: 40px 44px 80px;
+  }
+
+  .gallery__head {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .gallery__head a {
+    color: inherit;
+  }
+
+  .gallery__title {
+    margin: 0;
+    font: italic 600 clamp(34px, 4vw, 56px) / 1.05 var(--font-voice);
+    letter-spacing: -0.02em;
+  }
+
+  .gallery__suit {
+    margin-bottom: 52px;
+  }
+
+  .gallery__suit .eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .gallery__grid {
+    --card-w: 260px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-w), 1fr));
+    gap: 28px;
+    justify-items: center;
+  }
+
+  @media (max-width: 760px) {
+    .gallery {
+      padding: 26px 22px 60px;
+    }
+    .gallery__grid {
+      --card-w: min(300px, 80vw);
+    }
+  }
+</style>
