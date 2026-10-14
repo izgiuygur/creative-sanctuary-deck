@@ -126,7 +126,11 @@ export default function IntroScreen({ onComplete }: IntroScreenProps) {
       </div>
       <div className="intro__sub eyebrow">In for four · out for six</div>
 
-      <button type="button" className="intro__skip textlink" onClick={() => tlRef.current?.seek('wake')}>
+      <button type="button" className="intro__skip textlink" onClick={() => {
+          // Straight to the deck: no closing lines.
+          tlRef.current?.kill();
+          doneRef.current();
+        }}>
         Skip the breathing
       </button>
     </div>

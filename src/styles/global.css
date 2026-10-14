@@ -799,6 +799,19 @@ select {
   z-index: 2;
 }
 
+/* Wide screens: "Let it go" sits to the right, clear of the colour shape (which spreads 45% past the card). */
+@media (min-width: 761px) {
+  .kept__center {
+    position: relative;
+  }
+  .kept__center .actions {
+    position: absolute;
+    left: calc(145% + 16px);
+    bottom: 6%;
+    white-space: nowrap;
+  }
+}
+
 .kept__nav {
   display: inline-flex;
   align-items: center;
