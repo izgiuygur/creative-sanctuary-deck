@@ -491,13 +491,14 @@ select {
 
 .deck__under {
   position: absolute;
-  left: 3%;
-  top: 1.5%;
+  left: var(--x);
+  top: var(--y);
   width: 100%;
   height: 100%;
+  border: 1.5px solid var(--paper);
   border-radius: calc(var(--card-w) / 26.25);
   background: var(--deck-deep);
-  transform: rotate(3deg);
+  transform: rotate(var(--turn));
 }
 
 .deck__top {
@@ -701,6 +702,48 @@ html[data-theme='dark'] .reveal__card .flip {
   z-index: 1;
 }
 
+/* A small note under the open card: the card itself puts it back. */
+.reveal__hint {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  margin: 0;
+  white-space: nowrap;
+  font: italic 400 16px/20px var(--font-voice);
+  color: color-mix(in srgb, var(--ink) 70%, transparent);
+  animation: fade-in 0.6s ease 1.2s backwards;
+}
+
+.reveal__hint-arrow {
+  width: 22px;
+  flex-shrink: 0;
+  margin-bottom: 8px;
+}
+
+.reveal__hint--tap {
+  display: none;
+}
+
+@media (hover: none) {
+  .reveal__hint--click {
+    display: none;
+  }
+  .reveal__hint--tap {
+    display: inline;
+  }
+}
+
+/* Under 1000px the buttons already sit right below the card; the note would only crowd them. */
+@media (max-width: 999px) {
+  .reveal__hint {
+    display: none;
+  }
+}
+
 /* At night the pale suit colour would swallow the cream words, so it turns into a soft glow. */
 html[data-theme='dark'] .swash--pebble path {
   fill-opacity: 0.22;
@@ -720,9 +763,13 @@ html[data-theme='dark'] .swash--pebble path {
   }
 }
 
-.reveal .card,
-.kept .card {
+.reveal .card {
   --card-w: min(420px, calc((100dvh - 240px) * var(--card-ratio)));
+}
+
+/* A kept card has its two buttons underneath, so it leaves room for them. */
+.kept .card {
+  --card-w: min(420px, calc((100dvh - 310px) * var(--card-ratio)));
 }
 
 .reveal__text {
@@ -892,18 +939,6 @@ html[data-theme='dark'] .swash--pebble path {
   z-index: 2;
 }
 
-/* Wide screens: "Let it go" sits to the right, clear of the colour shape (which spreads 45% past the card). */
-@media (min-width: 761px) {
-  .kept__center {
-    position: relative;
-  }
-  .kept__center .actions {
-    position: absolute;
-    left: calc(145% + 16px);
-    bottom: 6%;
-    white-space: nowrap;
-  }
-}
 
 .kept__nav {
   display: inline-flex;

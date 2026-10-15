@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import gsap from 'gsap';
 import type { OracleCard, ElementFilter, DrawMode } from '../../types/card';
 import { elements, elementOrder } from '../../data/elements';
@@ -13,6 +13,8 @@ type View = 'boot' | 'intro' | 'deck' | 'hand' | 'kept';
 const HAND_LIMIT = 6;
 const BREATHED_KEY = 'creatives-sanctuary:breathed';
 const THEME_KEY = 'creatives-sanctuary:theme';
+/** Set once someone has sent a card back by clicking it; after that the note under the card retires. */
+const CARD_TAUGHT_KEY = 'creatives-sanctuary:card-sent-back';
 const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six'];
 const SLOT_NAMES = ['The mess', 'The nudge', 'The next bit'];
 const SLOT_TILTS = [-3, 1.5, 3];
@@ -23,18 +25,38 @@ if (import.meta.env.DEV && typeof window !== 'undefined') {
 }
 
 /** The suit's colour, as a soft shape behind a single card. The page itself stays paper. */
-function SuitSwash({ color, swashRef, pebble }: { color: string; swashRef?: React.Ref<SVGSVGElement>; pebble?: boolean }) {
+function SuitSwash({ color, swashRef, pebble }: { color: string; swashRef?: React.Ref<SVGSVGElement>; pebble?: Pebble }) {
   return (
     <svg className={`swash swash--suit${pebble ? ' swash--pebble' : ''}`} viewBox="0 0 640 720" aria-hidden="true" ref={swashRef}>
       <path
-        d={
-          pebble
-            ? 'M170 110 C260 40 440 50 530 140 C615 225 610 370 575 480 C535 600 430 685 300 672 C175 660 75 585 52 455 C30 330 80 180 170 110 Z'
-            : 'M120 170 C210 50 450 40 540 170 C620 290 610 500 510 610 C410 710 210 700 110 590 C20 490 40 270 120 170 Z'
-        }
-        fill={color}      />
+        d={pebble ? pebble.d : 'M120 170 C210 50 450 40 540 170 C620 290 610 500 510 610 C410 710 210 700 110 590 C20 490 40 270 120 170 Z'}
+        transform={pebble ? `rotate(${pebble.turn} 320 360)` : undefined}
+        fill={color}
+      />
     </svg>
   );
+}
+
+interface Pebble {
+  d: string;
+  turn: number;
+}
+
+// The pebble's five corners, with the handles going into and out of each one.
+const PEBBLE_AT = [[170, 110], [530, 140], [575, 480], [300, 672], [52, 455]];
+const PEBBLE_OUT = [[260, 40], [615, 225], [535, 600], [175, 660], [30, 330]];
+const PEBBLE_IN = [[80, 180], [440, 50], [610, 370], [430, 685], [75, 585]];
+
+/** The same pebble, nudged a little each time, so no two draws sit on quite the same shape. */
+function makePebble(): Pebble {
+  const nudge = PEBBLE_AT.map(() => [(Math.random() - 0.5) * 44, (Math.random() - 0.5) * 44]);
+  const pt = (p: number[], i: number) => `${Math.round(p[0] + nudge[i][0])} ${Math.round(p[1] + nudge[i][1])}`;
+  let d = `M${pt(PEBBLE_AT[0], 0)}`;
+  for (let i = 0; i < 5; i++) {
+    const n = (i + 1) % 5;
+    d += ` C${pt(PEBBLE_OUT[i], i)} ${pt(PEBBLE_IN[n], n)} ${pt(PEBBLE_AT[n], n)}`;
+  }
+  return { d: d + ' Z', turn: Math.round((Math.random() - 0.5) * 12) };
 }
 
 /** A little stack of cards, for "back to the deck". */
@@ -73,6 +95,7 @@ export default function DeckScene() {
   const [keptIndex, setKeptIndex] = useState(0);
   const [busy, setBusy] = useState(false);
   const [dark, setDark] = useState(false);
+  const [cardTaught, setCardTaught] = useState(true);
 
   const drawnRef = useRef<string[]>([]);
   const deckRef = useRef<HTMLButtonElement>(null);
@@ -95,6 +118,14 @@ export default function DeckScene() {
       /* storage unavailable: just show it */
     }
     setView(seen ? 'deck' : 'intro');
+  }, []);
+
+  useEffect(() => {
+    try {
+      setCardTaught(window.localStorage.getItem(CARD_TAUGHT_KEY) === '1');
+    } catch {
+      setCardTaught(false);
+    }
   }, []);
 
   // Layout.astro sets the theme before first paint; pick it up here so the moon knows.
@@ -128,6 +159,9 @@ export default function DeckScene() {
   }, []);
 
   const keptCard = view === 'kept' ? hand[keptIndex] ?? null : null;
+  // A fresh pebble for every card that opens, drawn or kept.
+  const revealPebble = useMemo(() => makePebble(), [current]);
+  const keptPebble = useMemo(() => makePebble(), [keptCard, view]);
   const resting = view === 'deck' && mode === 'single' && !current;
 
   const pickCard = useCallback((): OracleCard | null => {
@@ -191,14 +225,22 @@ export default function DeckScene() {
     const from = o
       ? { x: o.x - (r.left + r.width / 2), y: o.y - (r.top + r.height / 2), scale: o.width / r.width, rotation: -4 }
       : { x: 0, y: 30, scale: 0.9, rotation: -4 };
-    const tl = gsap.timeline({ onComplete: () => setBusy(false) });
+    const tl = gsap.timeline();
     gsap.set(inner, { rotateY: 0 });
     tl.fromTo(el, { ...from, opacity: 1 }, { x: 0, y: 0, scale: 1, rotation: 0, duration: 0.95, ease: 'power3.out' }, 0).to(
       inner,
       { rotateY: 180, duration: 0.75, ease: 'power2.inOut' },
       0.1
     );
-    if (text) tl.fromTo(text.children, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.09, ease: 'power2.out' }, 0.55);
+    // The card lands and can be handled at once; the buttons come with it, the words follow a beat later.
+    tl.call(() => setBusy(false), [], 1);
+    if (text) {
+      const actions = text.querySelector('.actions');
+      if (actions) tl.fromTo(actions, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 0.55);
+      const letters = text.querySelectorAll('.reveal__ch');
+      gsap.set(letters, { opacity: 0 });
+      tl.to(letters, { opacity: 1, duration: 0.05, stagger: 0.028, ease: 'none' }, 1.6);
+    }
     if (swashRef.current) tl.fromTo(swashRef.current, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.7, ease: 'power2.out' }, 0.35);
     return () => {
       tl.kill();
@@ -216,6 +258,8 @@ export default function DeckScene() {
     const swash = swashRef.current;
     const tl = gsap.timeline({ onComplete: then });
     if (text) tl.to(text.children, { opacity: 0, duration: 0.2 }, 0);
+    const hint = el.parentElement?.querySelector('.reveal__hint');
+    if (hint) tl.to(hint, { opacity: 0, duration: 0.2 }, 0);
     if (flyTo) {
       if (swash) tl.to(swash, { opacity: 0, duration: 0.25 }, 0);
       const r = el.getBoundingClientRect();
@@ -253,6 +297,19 @@ export default function DeckScene() {
       setBusy(false);
     });
   }, [busy, current, leaveCard]);
+
+  // Sending a card back by clicking it shows they've found it, so the note under the card can retire.
+  const putBackByCard = () => {
+    if (!cardTaught) {
+      setCardTaught(true);
+      try {
+        window.localStorage.setItem(CARD_TAUGHT_KEY, '1');
+      } catch {
+        /* storage unavailable: the note just keeps showing */
+      }
+    }
+    putBack();
+  };
 
   // Where a kept card flies to: the hand line, or the bottom of the screen when the phone has hidden it.
   const handTarget = () => {
@@ -419,17 +476,6 @@ export default function DeckScene() {
             Back to the deck
           </button>
         )}
-        {view === 'kept' && (
-          <>
-            <button type="button" className="navlink navlink--back wide-only" onClick={() => setView('hand')}>
-              Back to your hand
-            </button>
-            {/* On a phone the two swap: going back is the button under the card, letting go is up here. */}
-            <button type="button" className="navlink phone-only" onClick={letGo}>
-              Let it go
-            </button>
-          </>
-        )}
       </nav>
 
       <header className="masthead">
@@ -439,13 +485,16 @@ export default function DeckScene() {
             onClick={() => {
               if (busy) return;
               setCurrent(null);
+              // The title always leads home: the single deck, with any three-card reading put back.
+              setReading([]);
+              setMode('single');
               setView('deck');
             }}
           >
             Creative’s Sanctuary
           </button>
         </h1>
-        {resting && <p className="tagline eyebrow">An oracle deck for people who make things</p>}
+        {resting && <p className="tagline eyebrow">An oracle deck of 52 cards for people who make things</p>}
       </header>
 
       {/* Top right: suits, or where you are in your hand */}
@@ -515,7 +564,14 @@ export default function DeckScene() {
         {view === 'deck' && mode === 'single' && current && (
           <div className="reveal" key={current.id}>
             <div className="reveal__text" ref={revealTextRef} data-element={current.element}>
-              <p className="reveal__quote">{current.quote}</p>
+              {/* Typed out letter by letter once the card has landed. The live region below reads it whole. */}
+              <p className="reveal__quote" aria-hidden="true">
+                {Array.from(current.quote).map((ch, i) => (
+                  <span key={i} className="reveal__ch">
+                    {ch}
+                  </span>
+                ))}
+              </p>
               {/* Putting it back is the everyday move; keeping a card is the deliberate one. */}
               <div className="actions">
                 <button type="button" className="tab" onClick={putBack}>
@@ -533,18 +589,18 @@ export default function DeckScene() {
               </div>
             </div>
             <div className="reveal__card">
-              <SuitSwash color={elements[current.element].pageColorHex} swashRef={swashRef} pebble />
+              <SuitSwash color={elements[current.element].pageColorHex} swashRef={swashRef} pebble={revealPebble} />
               <div
                 className="card flip"
                 ref={flipRef}
                 role="button"
                 tabIndex={0}
                 aria-label="Put it back on the deck"
-                onClick={putBack}
+                onClick={putBackByCard}
                 onKeyDown={e => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    putBack();
+                    putBackByCard();
                   }
                 }}
               >
@@ -557,6 +613,17 @@ export default function DeckScene() {
                 </div>
               </div>
               </div>
+              {/* Few people guess the card itself is clickable, so a margin note says so until they've tried it. */}
+              {!cardTaught && (
+                <p className="reveal__hint" aria-hidden="true">
+                  <svg className="reveal__hint-arrow" viewBox="0 0 28 36" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M24 33 C10 31 5 20 9 4" />
+                    <path d="M3 10 L9 3 L15 9" />
+                  </svg>
+                  <span className="reveal__hint--click">click the card to send it back</span>
+                  <span className="reveal__hint--tap">tap the card to send it back</span>
+                </p>
+              )}
             </div>
             <p className="sr-only" aria-live="polite">
               You drew {current.word}. {current.quote}
@@ -681,18 +748,18 @@ export default function DeckScene() {
             )}
             <div className="kept__center">
               <div className="reveal__card">
-                <SuitSwash color={elements[keptCard.element].pageColorHex} />
+                <SuitSwash color={elements[keptCard.element].pageColorHex} pebble={keptPebble} />
                 <div className="card">
                   <CardFront card={keptCard} />
                 </div>
               </div>
               <div className="actions">
-                <button type="button" className="tab wide-only" onClick={letGo}>
-                  Let it go
-                </button>
-                <button type="button" className="tab phone-only" onClick={() => setView('hand')}>
+                <button type="button" className="tab" onClick={() => setView('hand')}>
                   <HandIcon />
                   Back to your hand
+                </button>
+                <button type="button" className="tab" onClick={letGo}>
+                  Let it go
                 </button>
               </div>
             </div>

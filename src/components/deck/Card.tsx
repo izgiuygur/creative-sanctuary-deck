@@ -58,11 +58,22 @@ export function CardBack() {
   );
 }
 
+// The cards under the top one: mostly squared up, each nudged and turned a little its own way (x %, y %, degrees).
+const UNDER: Array<[number, number, number]> = [
+  [4.7, 2.1, 3.5],
+  [-0.1, 2.5, -2.5],
+  [2.1, 2.6, 1.2],
+  [0, 0.7, -1],
+];
+
 /** The face-down deck: a tilted stack you tap to draw. */
 export function Deck({ onDraw, label, deckRef }: { onDraw: () => void; label: string; deckRef?: React.Ref<HTMLButtonElement> }) {
   return (
     <button type="button" className="deck" onClick={onDraw} aria-label={label} ref={deckRef}>
-      <span className="deck__under" />
+      {/* A few more cards peeking out underneath, so it reads as a whole deck. */}
+      {UNDER.map(([x, y, turn], i) => (
+        <span key={i} className="deck__under" style={{ '--x': `${x}%`, '--y': `${y}%`, '--turn': `${turn}deg` } as CSSProperties} />
+      ))}
       <span className="card deck__top">
         <CardBack />
       </span>
